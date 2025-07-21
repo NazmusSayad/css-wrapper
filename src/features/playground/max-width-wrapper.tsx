@@ -8,7 +8,12 @@ export function MaxWidthWrapperPlayground({}) {
       setLanguage={() => {}}
       input={<div>input</div>}
       preview={<div>preview</div>}
-      output={[{ label: 'Output', code: 'console.log("Hello, world!")' }]}
+      output={[
+        {
+          label: 'Output',
+          code: 'import { MaxWidthWrapper } from "@/components/max-width-wrapper"',
+        },
+      ]}
     />
   )
 }

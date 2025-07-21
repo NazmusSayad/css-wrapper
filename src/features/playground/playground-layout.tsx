@@ -1,3 +1,4 @@
+import { SyntaxHighlightedCode } from '@/components/syntax-highlighted-code'
 import {
   Select,
   SelectContent,
@@ -48,7 +49,13 @@ export function PlaygroundLayout({ input, preview, languages, output }: Playgrou
           </div>
         </header>
 
-        <div>{output.map(({ code }) => code)}</div>
+        <div>
+          {output.map(({ code }) => (
+            <SyntaxHighlightedCode key={code} lang={'javascript'}>
+              {code}
+            </SyntaxHighlightedCode>
+          ))}
+        </div>
       </section>
     </Wrapper>
   )

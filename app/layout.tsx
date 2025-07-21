@@ -1,5 +1,6 @@
 import '@/styles/index.css'
 import '@/styles/initial.css'
+import '@/styles/theme.scss'
 
 import { ThemeProvider } from '@/contexts/theme-context'
 import { getInitialTheme } from '@/helpers/theme'
