@@ -1,12 +1,23 @@
 /* eslint-disable react-func/max-lines-per-function */
 'use client'
 
-import { getBrowserTheme, getResolvedTheme } from '@/helpers/theme'
+import { getBrowserTheme, getInitialTheme, getResolvedTheme } from '@/helpers/theme'
 import createReactCtx from 'create-react-ctx'
 import { useEffect, useState } from 'react'
 
 export type BrowserTheme = 'light' | 'dark'
 export type AppTheme = BrowserTheme | 'system'
+
+function getThemeCookie() {
+  if (typeof document !== 'undefined') {
+    return document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('theme='))
+      ?.split('=')[1]
+  }
+
+  return null
+}
 
 function setThemeCookie(theme: AppTheme) {
   if (typeof document !== 'undefined') {
@@ -22,6 +33,13 @@ export const { Provider: ThemeProvider, useContext: useThemeContext } = createRe
     const [resolvedTheme, setResolvedTheme] = useState<BrowserTheme | null>(
       getResolvedTheme(initialTheme)
     )
+
+    useEffect(() => {
+      const themeCookie = getThemeCookie()
+      if (themeCookie) {
+        setThemeState(getInitialTheme(themeCookie))
+      }
+    }, [])
 
     useEffect(() => {
       if (theme === 'system') {

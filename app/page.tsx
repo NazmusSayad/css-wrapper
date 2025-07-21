@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-static'
+
 import { useThemeContext } from '@/contexts/theme-context'
 import { MaxWidthWrapperPlayground, PaddingWrapperPlayground } from '@/features/playground'
 
