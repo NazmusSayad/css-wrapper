@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { PlaygroundCode } from './playground-code'
+import { PlaygroundInput } from './playground-input'
 import { PlaygroundLayout } from './playground-layout'
+import { PlaygroundPreview } from './playground-preview'
 
 const languages = [
   { label: 'JavaScript', value: 'javascript' },
@@ -12,19 +14,19 @@ export function MaxWidthWrapperPlayground({}) {
 
   return (
     <PlaygroundLayout
-      input={<div>input</div>}
-      preview={<div>preview</div>}
+      input={<PlaygroundInput />}
+      preview={<PlaygroundPreview />}
       output={
         <PlaygroundCode
-          output={[
-            {
-              label: 'Output',
-              code: 'import { MaxWidthWrapper } from "@/components/max-width-wrapper"',
-            },
-          ]}
           language={language}
           languages={languages}
           setLanguage={setLanguage}
+          output={[
+            {
+              label: 'page.tsx',
+              code: 'import { MaxWidthWrapper } from "@/components/max-width-wrapper"',
+            },
+          ]}
         />
       }
     />
