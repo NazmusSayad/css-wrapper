@@ -42,7 +42,7 @@ export function PlaygroundCode({ languages, output, language, setLanguage }: Pla
 
       <div>
         {output.map(({ code }) => (
-          <SyntaxHighlightedCode key={code} lang={'javascript'}>
+          <SyntaxHighlightedCode key={code} className={'block'}>
             {code}
           </SyntaxHighlightedCode>
         ))}
