@@ -1,4 +1,3 @@
-import { Wrapper } from '@/layouts/wrapper'
 import { ReactNode } from 'react'
 
 type PlaygroundLayoutProps = {
@@ -9,13 +8,13 @@ type PlaygroundLayoutProps = {
 
 export function PlaygroundLayout({ input, preview, output }: PlaygroundLayoutProps) {
   return (
-    <Wrapper className={'bg-background'}>
-      <section className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_1.5fr]">
+    <div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_1.5fr]">
         <div>{input}</div>
         <div>{preview}</div>
-      </section>
+      </div>
 
-      <section>{output}</section>
-    </Wrapper>
+      <div>{output}</div>
+    </div>
   )
 }
