@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      .wrapper {
+        padding-inline: max(calc((100% - var(--max-width, 82.5rem)) / 2), var(--padding, 4%));
+        margin-inline: auto;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <section style="background-color: aqua">
+      <div class="wrapper">
+        <div style="padding: 2rem; background-color: lightblue">
+          <div style="padding: 1rem; background-color: burlywood"></div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
