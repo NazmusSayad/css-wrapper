@@ -2,7 +2,7 @@
 'use client'
 
 import { getBrowserTheme, getInitialTheme, getResolvedTheme } from '@/helpers/theme'
-import createReactCtx from 'create-react-ctx'
+import { createContext } from 'daily-react'
 import { useEffect, useState } from 'react'
 
 export type BrowserTheme = 'light' | 'dark'
@@ -27,7 +27,7 @@ function setThemeCookie(theme: AppTheme) {
   return theme
 }
 
-export const { Provider: ThemeProvider, useContext: useThemeContext } = createReactCtx(
+export const { Provider: ThemeProvider, useContext: useThemeContext } = createContext(
   ({ initialTheme }: { initialTheme: AppTheme }) => {
     const [theme, setThemeState] = useState<AppTheme>(initialTheme)
     const [resolvedTheme, setResolvedTheme] = useState<BrowserTheme | null>(

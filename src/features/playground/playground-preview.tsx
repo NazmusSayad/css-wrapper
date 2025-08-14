@@ -27,6 +27,7 @@ export function PlaygroundPreview({ maxWidth, padding }: { maxWidth: string; pad
         <div
           className={'bg-destructive h-full'}
           style={{
+            // @ts-expect-error --scale is not a valid CSS variable
             '--scale': `${containerWidth / WRAPPER_CONTAINER_WIDTH}`,
             width: `calc(var(--scale) * ${WRAPPER_CONTAINER_WIDTH}px)`,
           }}
