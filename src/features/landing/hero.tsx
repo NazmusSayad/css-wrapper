@@ -1,10 +1,12 @@
 import { Button } from '@/components/ui/button'
 import { Wrapper } from '@/layouts/wrapper'
+import { BsQuestionOctagon } from 'react-icons/bs'
+import { LuPlay } from 'react-icons/lu'
 
 export function Hero() {
   return (
     <section className="from-primary/5 via-background to-accent/5 relative overflow-hidden bg-gradient-to-br py-20 sm:py-28">
-      <div className="h-20" />
+      <div className="h-12 sm:h-20" />
 
       <div className="bg-grid-pattern pointer-events-none absolute inset-0 opacity-[0.02]" />
 
@@ -39,18 +41,34 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="text-muted-foreground mb-10 text-xl sm:text-2xl">
+        <p className="text-muted-foreground mb-10 text-base sm:text-xl md:text-2xl">
           Generate responsive CSS wrappers that give you{' '}
           <strong className="text-foreground">exactly</strong> the content width you want. No more
           math, no more surprises.
         </p>
 
         <div className="flex flex-col justify-center gap-4 min-[22.5rem]:flex-row">
-          <Button size="lg" className="text-base" asChild>
-            <a href="#playground">Try it now</a>
+          <Button
+            size="lg"
+            className="!h-11 rounded-[0.8125rem] !px-6 text-base sm:!h-12 sm:!px-7"
+            asChild
+          >
+            <a href="#playground">
+              <LuPlay className="text-base" />
+              TRY IT NOW
+            </a>
           </Button>
-          <Button variant="outline" size="lg" className="text-base" asChild>
-            <a href="#problems">Learn why</a>
+
+          <Button
+            size="lg"
+            variant="outline"
+            className="!h-11 rounded-[0.8125rem] !px-5 text-base sm:!h-12 sm:!px-6"
+            asChild
+          >
+            <a href="#why">
+              <BsQuestionOctagon className="text-base" />
+              WHY?
+            </a>
           </Button>
         </div>
 
