@@ -53,7 +53,7 @@ export const platforms: Platform[] = [
         {
           file: 'index.tsx',
           code: `export function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div className={\`mx-auto w-full px-[${generateTailwindCssPaddingCode(input)}] \${typeof className === 'string' ? className : ''}\`} {...props} />
+  return <div className={\`mx-auto w-full ${generateTailwindCssPaddingCode(input)} \${typeof className === 'string' ? className : ''}\`} {...props} />
 }`,
         },
       ]
@@ -63,7 +63,7 @@ export const platforms: Platform[] = [
         {
           file: 'index.tsx',
           code: `export function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div className={\`mx-auto w-full max-w-[${generateTailwindCssMaxWidthCode(input)}] \${typeof className === 'string' ? className : ''}\`} {...props} />
+  return <div className={\`mx-auto w-full ${generateTailwindCssMaxWidthCode(input)} \${typeof className === 'string' ? className : ''}\`} {...props} />
 }`,
         },
       ]

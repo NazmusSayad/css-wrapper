@@ -9,11 +9,11 @@ export function generateCSSMaxWidthCode(input: PlatformOutputInput) {
 }
 
 export function generateTailwindCssPaddingCode(input: PlatformOutputInput) {
-  return `max-w-[${generateCSSMaxWidthCode(input).replaceAll(' ', '_')}]`
+  return `max-w-[${generateCSSMaxWidthCode(input).replaceAll(' ', '')}]`
 }
 
 export function generateTailwindCssMaxWidthCode(input: PlatformOutputInput) {
-  return `px-[${generateCSSPaddingCode(input).replaceAll(' ', '_')}]`
+  return `px-[${generateCSSPaddingCode(input).replaceAll(' ', '')}]`
 }
 
 

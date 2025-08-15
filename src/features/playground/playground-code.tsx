@@ -26,7 +26,7 @@ export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputInput) 
           <button
             onClick={() => setMode('max-width')}
             className={cn(
-              'border-input flex h-11 w-full items-center justify-center gap-2 rounded-l-md border bg-transparent px-3 py-2 text-sm transition-[color,box-shadow] outline-none',
+              'border-input flex h-11 w-full items-center justify-center gap-2 rounded-l-md border bg-transparent px-3 py-2 text-xs transition-[color,box-shadow] outline-none sm:text-sm',
               mode === 'max-width'
                 ? 'bg-primary/10 text-foreground shadow-xs'
                 : 'text-muted-foreground hover:text-foreground hover:bg-input/50'
@@ -37,7 +37,7 @@ export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputInput) 
           <button
             onClick={() => setMode('padding')}
             className={cn(
-              'border-input flex h-11 w-full items-center justify-center gap-2 rounded-r-md border border-l-0 bg-transparent px-3 py-2 text-sm transition-[color,box-shadow] outline-none',
+              'border-input flex h-11 w-full items-center justify-center gap-2 rounded-r-md border border-l-0 bg-transparent px-3 py-2 text-xs transition-[color,box-shadow] outline-none sm:text-sm',
               mode === 'padding'
                 ? 'bg-primary/10 text-foreground shadow-xs'
                 : 'text-muted-foreground hover:text-foreground hover:bg-input/50'
@@ -116,7 +116,7 @@ function PlatformOutput({
     defaultMaxWidth,
   ])
 
-  const handleCopy = async (code: string, file: string) => {
+  async function handleCopy(code: string, file: string) {
     try {
       await navigator.clipboard.writeText(code)
       setCopiedFile(file)
