@@ -16,6 +16,7 @@ export type PlatformOutputInput = {
 }
 
 export type Platform = {
+  id: string
   name: ReactNode
   paddingWrapper(input: PlatformOutputInput): PlatformOutput[]
   maxWidthWrapper(input: PlatformOutputInput): PlatformOutput[]

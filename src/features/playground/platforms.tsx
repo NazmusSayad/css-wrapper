@@ -9,6 +9,7 @@ import { Platform } from './types'
 
 export const platforms: Platform[] = [
   {
+    id: 'native-css',
     name: (
       <>
         <DevIconsCSS /> Native CSS
@@ -41,6 +42,7 @@ export const platforms: Platform[] = [
   },
 
   {
+    id: 'react-css-modules',
     name: (
       <>
         <DevIconsReact /> React + <DevIconsCSS /> CSS Modules
@@ -89,6 +91,7 @@ export function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
   },
 
   {
+    id: 'react-tw-css',
     name: (
       <>
         <DevIconsReact /> React + <DevIconsTailwind /> Tailwind CSS

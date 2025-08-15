@@ -14,12 +14,9 @@ import { findLanguage } from './helpers/find-language'
 import { platforms } from './platforms'
 import { Platform, PlatformOutputInput, type PlatformOutput } from './types'
 
-const platformWithId = platforms.map((p, i) => ({ ...p, id: String(i) }))
-const defaultPlatformId = platformWithId[0].id
-
 export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputInput) {
   const [mode, setMode] = useState<'padding' | 'max-width'>('padding')
-  const [selectedPlatformId, setSelectedPlatformId] = useState<string>(defaultPlatformId)
+  const [selectedPlatformId, setSelectedPlatformId] = useState<string>(platforms[0].id)
 
   return (
     <>
@@ -49,16 +46,13 @@ export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputInput) 
           </button>
         </div>
 
-        <Select
-          value={selectedPlatformId || defaultPlatformId}
-          onValueChange={setSelectedPlatformId}
-        >
+        <Select value={selectedPlatformId} onValueChange={setSelectedPlatformId}>
           <SelectTrigger className="!h-11 !w-full min-w-[10rem] justify-self-end !px-4 sm:!w-auto">
             <SelectValue placeholder="Select a language" />
           </SelectTrigger>
 
           <SelectContent align="end">
-            {platformWithId.map(({ id, name }) => (
+            {platforms.map(({ id, name }) => (
               <SelectItem key={id} value={id}>
                 {name}
               </SelectItem>
@@ -69,7 +63,7 @@ export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputInput) 
 
       <PlatformOutput
         mode={mode}
-        platform={platformWithId.find(({ id }) => id === selectedPlatformId) || platformWithId[0]}
+        platform={platforms.find(({ id }) => id === selectedPlatformId) || platforms[0]}
         {...platformOutputProps}
       />
     </>
@@ -90,6 +84,7 @@ function PlatformOutput({
   mode: 'padding' | 'max-width'
 }) {
   const [copiedFile, setCopiedFile] = useState<string | null>(null)
+  const [selectedTab, setSelectedTab] = useState<string | null>(null)
 
   const output = useMemo(() => {
     return mode === 'padding'
@@ -130,47 +125,66 @@ function PlatformOutput({
     }
   }
 
+  const selectedFile = output.find(({ file }) => file === selectedTab) || output[0]
+
   return (
     <div className="bg-card overflow-hidden rounded-md border">
-      {output.map(({ file, code }) => (
-        <div key={file}>
-          <div className="flex items-center justify-between border-b px-4 py-1">
-            <div className="text-muted-foreground text-sm font-medium">{file}</div>
-
+      <div className="bg-muted/30 flex items-center justify-between border-b">
+        <div className="flex items-center">
+          {output.map(({ file }) => (
             <button
-              onClick={() => handleCopy(code, file)}
-              disabled={copiedFile === file}
+              key={file}
+              onClick={() => setSelectedTab(file)}
               className={cn(
-                'text-muted-foreground flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors',
-                copiedFile === file ? 'text-success' : 'hover:bg-muted hover:text-foreground'
+                'border-border flex items-center gap-2 border-r px-4 py-2 text-sm font-medium transition-colors',
+                selectedFile.file === file
+                  ? 'bg-background text-foreground border-b-primary border-b-2'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
               )}
             >
-              {copiedFile === file ? (
-                <>
-                  <Check className="h-4 w-4" />
-                  Copied!
-                </>
-              ) : (
-                <>
-                  <Copy className="h-4 w-4" />
-                  Copy
-                </>
-              )}
+              {file}
             </button>
-          </div>
-
-          <div className="*:!text-[1rem] *:!leading-[1.6]">
-            <SyntaxHighlighter
-              showLineNumbers
-              style={atomOneDark}
-              language={findLanguage(file)}
-              customStyle={{ paddingBottom: '1rem' }}
-            >
-              {code}
-            </SyntaxHighlighter>
-          </div>
+          ))}
         </div>
-      ))}
+
+        {selectedFile && (
+          <button
+            onClick={() => handleCopy(selectedFile.code, selectedFile.file)}
+            disabled={copiedFile === selectedFile.file}
+            className={cn(
+              'text-muted-foreground flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors',
+              copiedFile === selectedFile.file
+                ? 'text-success'
+                : 'hover:bg-muted hover:text-foreground'
+            )}
+          >
+            {copiedFile === selectedFile.file ? (
+              <>
+                <Check className="h-4 w-4" />
+                Copied!
+              </>
+            ) : (
+              <>
+                <Copy className="h-4 w-4" />
+                Copy
+              </>
+            )}
+          </button>
+        )}
+      </div>
+
+      {selectedFile && (
+        <div className="*:!text-[1rem] *:!leading-[1.6]">
+          <SyntaxHighlighter
+            showLineNumbers
+            style={atomOneDark}
+            language={findLanguage(selectedFile.file)}
+            customStyle={{ paddingBottom: '1rem' }}
+          >
+            {selectedFile.code}
+          </SyntaxHighlighter>
+        </div>
+      )}
     </div>
   )
 }
