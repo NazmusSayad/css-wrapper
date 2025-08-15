@@ -75,7 +75,7 @@ export function PlaygroundPreview({ maxWidth, padding }: { maxWidth: string; pad
           contentRef={paddingWrapperContentRef}
         /> */}
 
-        <div className="mx-auto flex w-[90%] items-center justify-center pt-4 pb-2">
+        <div className="mx-auto flex w-[90%] items-center justify-center py-3">
           <hr className="my-0 w-full" />
           <hr className="my-0 w-12 border-none" />
           <hr className="my-0 w-6" />
