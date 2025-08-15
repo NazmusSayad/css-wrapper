@@ -58,7 +58,7 @@ export function PlaygroundInput({
           description="Configure your wrapper dimensions and spacing"
         />
 
-        <div className="space-y-4 pt-2">
+        <div className="space-y-5 pt-2">
           <div>
             <Label className="text-foreground/90 flex-col items-start gap-2.5 text-xs font-medium tracking-wider uppercase">
               <span>Max Width</span>
@@ -83,13 +83,13 @@ export function PlaygroundInput({
                       tip.type === 'error' && 'text-destructive/80'
                     )}
                   >
-                    <span className="mt-0.5 shrink-0 text-base">
+                    <span className="shrink-0 text-lg">
                       {tip.type === 'info' && <HiOutlineInformationCircle />}
                       {tip.type === 'warning' && <HiOutlineExclamationTriangle />}
                       {tip.type === 'error' && <HiOutlineExclamationCircle />}
                     </span>
 
-                    <p className="w-full pr-2 text-xs break-words">{tip.text}</p>
+                    <p className="my-auto w-full pr-2 text-xs break-words">{tip.text}</p>
                   </li>
                 ))}
               </ul>
@@ -120,13 +120,13 @@ export function PlaygroundInput({
                       tip.type === 'error' && 'text-destructive/80'
                     )}
                   >
-                    <span className="mt-0.5 shrink-0 text-base">
+                    <span className="shrink-0 text-lg">
                       {tip.type === 'info' && <HiOutlineInformationCircle />}
                       {tip.type === 'warning' && <HiOutlineExclamationTriangle />}
                       {tip.type === 'error' && <HiOutlineExclamationCircle />}
                     </span>
 
-                    <p className="w-full pr-2 text-xs break-words">{tip.text}</p>
+                    <p className="my-auto w-full pr-2 text-xs break-words">{tip.text}</p>
                   </li>
                 ))}
               </div>
@@ -145,7 +145,7 @@ export function PlaygroundInput({
             />
           </AccordionTrigger>
 
-          <AccordionContent className="space-y-4 pt-2">
+          <AccordionContent className="space-y-5 pt-2">
             <Label className="text-foreground/90 flex-col items-start gap-2.5 text-xs font-medium tracking-wider uppercase">
               <span>Width Variable Name</span>
 

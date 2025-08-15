@@ -6,7 +6,7 @@ import { PlaygroundPreview } from './playground-preview'
 
 export function WrapperPlayground({}) {
   const [valuePadding, setValuePadding] = useState('4%')
-  const [valueMaxWidth, setValueMaxWidth] = useState('1200px')
+  const [valueMaxWidth, setValueMaxWidth] = useState('75rem')
 
   const [cssVariablePadding, setCssVariablePadding] = useState('padding')
   const [cssVariableMaxWidth, setCssVariableMaxWidth] = useState('max-width')
@@ -18,20 +18,28 @@ export function WrapperPlayground({}) {
         <PlaygroundInput
           padding={valuePadding}
           maxWidth={valueMaxWidth}
-          paddingTips={[
-            {
-              type: 'info',
-              text: 'Padding is the space between the content and the border of the container. It is a percentage of the container width.',
-            },
-            {
-              type: 'warning',
-              text: 'Padding is the space between the content and the border of the container. It is a percentage of the container width.',
-            },
-            {
-              type: 'error',
-              text: 'Padding is the space between the content and the border of the container. It is a percentage of the container width.',
-            },
-          ]}
+          paddingTips={
+            valuePadding.trim().endsWith('%')
+              ? []
+              : [
+                  {
+                    type: 'info',
+                    text: 'It is recommended to use a percentage value for padding. This will ensure that the padding is responsive and will adjust to the container width.',
+                  },
+                ]
+          }
+          maxWidthTips={
+            valueMaxWidth.trim().endsWith('rem')
+              ? []
+              : valueMaxWidth.trim().endsWith('%')
+                ? [
+                    {
+                      type: 'error',
+                      text: 'Do not use a percentage value for max-width. It will not work as expected.',
+                    },
+                  ]
+                : [{ type: 'info', text: 'It is recommended to use a rem value for max-width.' }]
+          }
           paddingVariable={cssVariablePadding}
           maxWidthVariable={cssVariableMaxWidth}
           setPadding={setValuePadding}
