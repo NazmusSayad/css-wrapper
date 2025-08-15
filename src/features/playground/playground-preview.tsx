@@ -7,8 +7,8 @@ export function PlaygroundPreview({ maxWidth, padding }: { maxWidth: string; pad
   const [wrapperViewport, setWrapperViewport] = useState(1600)
   const [containerWidth, setContainerWidth] = useState(0)
 
-  const [paddingWrapperWidth, setPaddingWrapperWidth] = useState(0)
-  const [maxWidthWrapperWidth, setMaxWidthWrapperWidth] = useState(0)
+  const [_paddingWrapperWidth, setPaddingWrapperWidth] = useState(0)
+  const [_maxWidthWrapperWidth, setMaxWidthWrapperWidth] = useState(0)
 
   const containerRef = useRef<HTMLDivElement>(null)
   const paddingWrapperContentRef = useRef<HTMLDivElement>(null)
@@ -46,18 +46,18 @@ export function PlaygroundPreview({ maxWidth, padding }: { maxWidth: string; pad
   }, [containerRef, maxWidthWrapperContentRef, paddingWrapperContentRef])
 
   const rawScale = containerWidth / wrapperViewport
-  const maxWidthWrapperPadding = (wrapperViewport - maxWidthWrapperWidth) / 2
-  const paddingWrapperPadding = (wrapperViewport - maxWidthWrapperWidth) / 2
+  const maxWidthWrapperPadding = (wrapperViewport - _maxWidthWrapperWidth) / 2
+  const paddingWrapperPadding = (wrapperViewport - _maxWidthWrapperWidth) / 2
 
   return (
-    <div ref={containerRef} className="relative isolate h-full min-h-72">
-      <div className="absolute inset-0 flex size-full flex-col gap-2">
+    <div ref={containerRef} className="relative isolate h-full">
+      <div className="inset-0 flex size-full flex-col gap-2 md:absolute">
         <MaxWidthWrapper
           padding={padding}
           maxWidth={maxWidth}
           rawScale={rawScale}
           wrapperViewport={wrapperViewport}
-          contentWidth={maxWidthWrapperWidth}
+          contentWidth={_maxWidthWrapperWidth}
           contentPadding={maxWidthWrapperPadding}
           contentRef={maxWidthWrapperContentRef}
         />
@@ -126,7 +126,7 @@ export function MaxWidthWrapper({
       <div>Max Width Wrapper</div>
 
       <div
-        className="bg-secondary h-full origin-left"
+        className="bg-secondary h-full min-h-24 origin-left md:min-h-auto"
         style={{ width: `${wrapperViewport}px`, transform: `scaleX(${rawScale})` }}
       >
         <div
@@ -155,7 +155,7 @@ export function PaddingWrapper({
       <div>Padding Wrapper</div>
 
       <div
-        className="bg-secondary h-full origin-left"
+        className="bg-secondary h-full min-h-24 origin-left md:min-h-auto"
         style={{
           width: `${wrapperViewport}px`,
           transform: `scaleX(${rawScale})`,
