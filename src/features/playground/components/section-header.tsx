@@ -8,14 +8,15 @@ export function SectionHeader({
   description: string
 }) {
   return (
-    <div className="pb-4">
-      <div className="flex items-center gap-3 pb-2">
-        <div className="bg-muted/50 text-foreground/90 rounded-lg p-2">{icon}</div>
-
-        <h3 className="text-foreground/90 text-sm font-bold tracking-wider uppercase">{title}</h3>
+    <div className="flex items-start gap-3 pb-4">
+      <div className="bg-muted/50 text-foreground/90 rounded-lg p-2 [&>svg]:size-[1.375rem]">
+        {icon}
       </div>
 
-      <p className="text-muted-foreground/70 text-xs font-normal">{description}</p>
+      <div className="space-y-1">
+        <h3 className="text-foreground/90 text-base font-bold tracking-wider uppercase">{title}</h3>
+        <p className="text-muted-foreground/70 text-sm font-normal">{description}</p>
+      </div>
     </div>
   )
 }
