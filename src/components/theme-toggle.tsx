@@ -34,9 +34,9 @@ export function ThemeToggle({ className }: { className?: string }) {
     <div
       className={cn(
         css.root,
-        'invisible grid w-[72px] place-content-center opacity-0 ring-2 ring-transparent transition-all',
-        isFocused && 'ring-ring rounded-full',
+        'invisible grid w-[72px] scale-[.9] place-content-center opacity-0 ring-2 ring-transparent transition-all',
         isMounted && 'visible opacity-100 delay-300',
+        isFocused && 'ring-ring rounded-full',
         className
       )}
     >

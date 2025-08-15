@@ -8,6 +8,13 @@ import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
+const navItems = [
+  {
+    label: 'Why?',
+    href: '#why',
+  },
+]
+
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollTop, setScrollTop] = useState<number | null>(null)
@@ -28,7 +35,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'fixed top-0 z-50 w-full border-b border-transparent bg-transparent backdrop-blur-none',
+        'fixed top-0 isolate z-50 w-full border-b border-transparent bg-transparent backdrop-blur-none',
         scrollTop && scrollTop > 100 && 'border-b-border bg-background/80',
         (scrollTop == null || scrollTop > 100) && 'backdrop-blur-md'
       )}
@@ -37,32 +44,27 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <DevIconsCSS className="size-5" />
-            <span className="font-mono text-lg font-semibold uppercase">CSS Wrapper</span>
+            <span className="font-mono text-base font-semibold uppercase sm:text-lg">
+              CSS Wrapper
+            </span>
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">
-            <a
-              href="#why"
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-            >
-              Why?
-            </a>
-            <a
-              href="#problems"
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-            >
-              Problems
-            </a>
-            <a
-              href="#solutions"
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-            >
-              Solutions
-            </a>
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
 
           <div className="flex items-center gap-4">
-            <ThemeToggle />
+            <div className="hidden sm:block">
+              <ThemeToggle />
+            </div>
 
             <Button variant="ghost" className="hidden sm:inline-flex" asChild>
               <a
