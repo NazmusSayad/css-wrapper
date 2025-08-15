@@ -24,29 +24,39 @@ export function ProblemSolution1() {
           viewBox="0 0 380 80"
           className="border-destructive/20 bg-destructive/5 mb-4 h-auto w-full rounded-lg border p-3"
         >
-          <rect x="10" y="10" width="40" height="50" fill="#ef4444" fillOpacity="0.3" />
-          <text x="30" y="40" textAnchor="middle" className="fill-destructive text-xs">
-            32px
-          </text>
-
           <rect x="50" y="10" width="280" height="50" fill="#f1f5f9" />
           <text x="190" y="40" textAnchor="middle" className="fill-slate-600 text-sm font-semibold">
-            Content: Only 1376px
+            Content: Only 1376
+          </text>
+
+          <rect x="50" y="10" width="30" height="50" fill="#ef4444" fillOpacity="0.2" />
+          <text x="65" y="40" textAnchor="middle" className="fill-destructive text-xs">
+            32
+          </text>
+
+          <rect x="300" y="10" width="30" height="50" fill="#ef4444" fillOpacity="0.2" />
+          <text x="315" y="40" textAnchor="middle" className="fill-destructive text-xs">
+            32
+          </text>
+
+          <rect x="10" y="10" width="40" height="50" fill="#ef4444" fillOpacity="0.3" />
+          <text x="30" y="40" textAnchor="middle" className="fill-destructive text-[0.625rem]">
+            240
           </text>
 
           <rect x="330" y="10" width="40" height="50" fill="#ef4444" fillOpacity="0.3" />
-          <text x="350" y="40" textAnchor="middle" className="fill-destructive text-xs">
-            32px
+          <text x="350" y="40" textAnchor="middle" className="fill-destructive text-[0.625rem]">
+            240
           </text>
 
           <text x="190" y="75" textAnchor="middle" className="fill-destructive font-mono text-xs">
-            Container: 1440px
+            Container: 1920
           </text>
         </svg>
 
         <div className="space-y-2 text-sm">
           <div className="bg-destructive/5 text-destructive flex items-center justify-between rounded p-3">
-            <span>Container width:</span>
+            <span>Content width:</span>
             <span className="font-mono">1440px</span>
           </div>
           <div className="bg-destructive/5 text-destructive flex items-center justify-between rounded p-3">
@@ -92,23 +102,23 @@ export function ProblemSolution1() {
           viewBox="0 0 380 80"
           className="border-success/20 bg-success/5 mb-4 h-auto w-full rounded-lg border p-3"
         >
-          <rect x="10" y="10" width="24" height="50" fill="#10b981" fillOpacity="0.3" />
-          <text x="22" y="40" textAnchor="middle" className="fill-success text-xs">
-            auto
+          <rect x="10" y="10" width="40" height="50" fill="#10b981" fillOpacity="0.3" />
+          <text x="30" y="40" textAnchor="middle" className="fill-success text-[0.625rem]">
+            240
           </text>
 
-          <rect x="34" y="10" width="312" height="50" fill="#dcfce7" />
+          <rect x="50" y="10" width="280" height="50" fill="#dcfce7" />
           <text x="190" y="40" textAnchor="middle" className="fill-success text-sm font-bold">
-            Content: Exactly 1440px! ✓
+            Content: Exactly 1440 ✓
           </text>
 
-          <rect x="346" y="10" width="24" height="50" fill="#10b981" fillOpacity="0.3" />
-          <text x="358" y="40" textAnchor="middle" className="fill-success text-xs">
-            auto
+          <rect x="330" y="10" width="40" height="50" fill="#10b981" fillOpacity="0.3" />
+          <text x="350" y="40" textAnchor="middle" className="fill-success text-[0.625rem]">
+            240
           </text>
 
           <text x="190" y="75" textAnchor="middle" className="fill-success font-mono text-xs">
-            Smart Container
+            Container: 1920
           </text>
         </svg>
 
