@@ -1,3 +1,5 @@
+import { ProblemSolveCodeBlock } from './problem-solve-code-block'
+
 export function ProblemSolution1() {
   return (
     <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
@@ -22,14 +24,15 @@ export function ProblemSolution1() {
 
         <div className="from-muted/50 mb-4 rounded-md bg-gradient-to-r to-transparent p-4">
           <h5 className="text-foreground mb-2 text-sm font-semibold">Traditional CSS</h5>
-          <pre className="bg-muted/50 overflow-x-auto rounded p-3 text-xs">
-            <code>{`.wrapper {
+
+          <ProblemSolveCodeBlock
+            className="bg-muted/30"
+            code={`.wrapper {
   max-width: 1440px;
   padding-inline: 2rem;
   margin-inline: auto;
-}
-/* Result: Only 1376px content! */`}</code>
-          </pre>
+}`}
+          />
         </div>
 
         <svg
@@ -101,14 +104,14 @@ export function ProblemSolution1() {
 
         <div className="from-success/10 mb-4 rounded-md bg-gradient-to-r to-transparent p-4">
           <h5 className="text-foreground mb-2 text-sm font-semibold">CSS Wrapper Solution</h5>
-          <pre className="bg-success/5 overflow-x-auto rounded p-3 text-xs">
-            <code>{`.wrapper {
+          <ProblemSolveCodeBlock
+            className="bg-success/5"
+            code={`.wrapper {
   --max-width: 1440px;
   width: min(100% - 4vw, var(--max-width));
   margin-inline: auto;
-}
-/* Result: Exactly 1440px content! */`}</code>
-          </pre>
+}`}
+          />
         </div>
 
         <svg
