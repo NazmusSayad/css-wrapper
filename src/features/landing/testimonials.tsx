@@ -66,11 +66,7 @@ export function Testimonials() {
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="group relative p-6 transition-transform hover:scale-105">
-              {/* Background gradient that appears on hover */}
-              <div className="from-primary/5 to-chart-2/5 absolute inset-0 rounded-2xl bg-gradient-to-br opacity-0 transition-opacity group-hover:opacity-100"></div>
-
-              {/* Content */}
+            <div key={index} className="relative p-6">
               <div className="relative">
                 <div className="mb-6">
                   <div className="text-warning mb-4 flex justify-center">

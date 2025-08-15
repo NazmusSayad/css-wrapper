@@ -6,7 +6,7 @@ export function Hero() {
     <section className="from-primary/5 via-background to-accent/5 relative overflow-hidden bg-gradient-to-br py-20 sm:py-28">
       <div className="h-20" />
 
-      <div className="bg-grid-pattern absolute inset-0 opacity-[0.02]" />
+      <div className="bg-grid-pattern pointer-events-none absolute inset-0 opacity-[0.02]" />
 
       <Wrapper className="text-center [--max-width:60rem]">
         <div className="bg-secondary/50 text-secondary-foreground mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
@@ -54,7 +54,6 @@ export function Hero() {
           </Button>
         </div>
 
-        {/* Simple floating badges instead of cards */}
         <div className="mt-20 flex flex-wrap items-center justify-center gap-6">
           <div className="from-primary/10 flex items-center gap-2 rounded-full bg-gradient-to-r to-transparent px-4 py-2">
             <svg className="text-primary size-5" fill="currentColor" viewBox="0 0 20 20">

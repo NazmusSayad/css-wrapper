@@ -14,13 +14,11 @@ export function WhyWrapper() {
         </div>
 
         <div className="space-y-12">
-          {/* Benefits in a flowing layout */}
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Benefit 1 */}
-            <div className="group text-center transition-transform hover:scale-105">
-              <div className="from-primary/20 to-primary/5 group-hover:from-primary/30 group-hover:to-primary/10 mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-gradient-to-br transition-colors">
+            <div className="text-center">
+              <div className="from-primary/20 to-primary/5 mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-gradient-to-br">
                 <svg
-                  className="text-primary size-10 transition-transform group-hover:scale-110"
+                  className="text-primary size-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -40,11 +38,10 @@ export function WhyWrapper() {
               </p>
             </div>
 
-            {/* Benefit 2 */}
-            <div className="group text-center transition-transform hover:scale-105">
-              <div className="from-chart-2/20 to-chart-2/5 group-hover:from-chart-2/30 group-hover:to-chart-2/10 mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-gradient-to-br transition-colors">
+            <div className="text-center">
+              <div className="from-chart-2/20 to-chart-2/5 mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-gradient-to-br">
                 <svg
-                  className="text-chart-2 size-10 transition-transform group-hover:scale-110"
+                  className="text-chart-2 size-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -63,11 +60,10 @@ export function WhyWrapper() {
               </p>
             </div>
 
-            {/* Benefit 3 */}
-            <div className="group text-center transition-transform hover:scale-105">
-              <div className="from-chart-4/20 to-chart-4/5 group-hover:from-chart-4/30 group-hover:to-chart-4/10 mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-gradient-to-br transition-colors">
+            <div className="text-center">
+              <div className="from-chart-4/20 to-chart-4/5 mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-gradient-to-br">
                 <svg
-                  className="text-chart-4 size-10 transition-transform group-hover:scale-110"
+                  className="text-chart-4 size-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -86,11 +82,10 @@ export function WhyWrapper() {
               </p>
             </div>
 
-            {/* Benefit 4 */}
-            <div className="group text-center transition-transform hover:scale-105">
-              <div className="from-success/20 to-success/5 group-hover:from-success/30 group-hover:to-success/10 mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-gradient-to-br transition-colors">
+            <div className="text-center">
+              <div className="from-success/20 to-success/5 mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-gradient-to-br">
                 <svg
-                  className="text-success size-10 transition-transform group-hover:scale-110"
+                  className="text-success size-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -109,11 +104,10 @@ export function WhyWrapper() {
               </p>
             </div>
 
-            {/* Benefit 5 */}
-            <div className="group text-center transition-transform hover:scale-105">
-              <div className="from-warning/20 to-warning/5 group-hover:from-warning/30 group-hover:to-warning/10 mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-gradient-to-br transition-colors">
+            <div className="text-center">
+              <div className="from-warning/20 to-warning/5 mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-gradient-to-br">
                 <svg
-                  className="text-warning size-10 transition-transform group-hover:scale-110"
+                  className="text-warning size-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -132,11 +126,10 @@ export function WhyWrapper() {
               </p>
             </div>
 
-            {/* Benefit 6 */}
-            <div className="group text-center transition-transform hover:scale-105">
-              <div className="from-chart-1/20 to-chart-1/5 group-hover:from-chart-1/30 group-hover:to-chart-1/10 mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-gradient-to-br transition-colors">
+            <div className="text-center">
+              <div className="from-chart-1/20 to-chart-1/5 mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-gradient-to-br">
                 <svg
-                  className="text-chart-1 size-10 transition-transform group-hover:scale-110"
+                  className="text-chart-1 size-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -162,7 +155,6 @@ export function WhyWrapper() {
             </div>
           </div>
 
-          {/* Browser support section */}
           <div className="text-center">
             <div className="mb-8">
               <div className="bg-primary/10 text-primary mx-auto mb-4 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm">

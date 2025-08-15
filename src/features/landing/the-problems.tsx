@@ -14,7 +14,6 @@ export function TheProblems() {
         </div>
 
         <div className="grid gap-12 lg:gap-16">
-          {/* Problem 1: The Math Problem */}
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
               <div className="bg-destructive/10 text-destructive mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm">
@@ -66,7 +65,6 @@ export function TheProblems() {
             </div>
           </div>
 
-          {/* Problem 2: Nested Wrapper Breakage */}
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             <div className="lg:order-2">
               <div className="bg-destructive/10 text-destructive mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm">
@@ -111,7 +109,6 @@ export function TheProblems() {
             </div>
           </div>
 
-          {/* Problem 3: Breakpoint Inconsistency */}
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
               <div className="bg-destructive/10 text-destructive mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm">

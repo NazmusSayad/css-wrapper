@@ -5,7 +5,6 @@ export function Footer() {
     <footer className="bg-muted/10 border-t py-12">
       <Wrapper>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <div className="bg-primary flex size-8 items-center justify-center rounded-lg">
@@ -31,7 +30,6 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Tools */}
           <div className="space-y-4">
             <h3 className="text-foreground font-semibold">Tools</h3>
             <ul className="space-y-2">
@@ -62,7 +60,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Learn */}
           <div className="space-y-4">
             <h3 className="text-foreground font-semibold">Learn</h3>
             <ul className="space-y-2">
@@ -93,7 +90,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Connect */}
           <div className="space-y-4">
             <h3 className="text-foreground font-semibold">Connect</h3>
             <ul className="space-y-2">

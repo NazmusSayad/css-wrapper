@@ -15,7 +15,6 @@ export function TheSolutions() {
         </div>
 
         <div className="grid gap-12 lg:gap-16">
-          {/* Solution 1: Max-Width Wrapper */}
           <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
             <div>
               <div className="bg-success/10 text-success mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm">
@@ -126,7 +125,6 @@ export function TheSolutions() {
             </div>
           </div>
 
-          {/* Solution 2: Padding Wrapper */}
           <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
             <div className="lg:order-2">
               <div className="bg-success/10 text-success mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm">
