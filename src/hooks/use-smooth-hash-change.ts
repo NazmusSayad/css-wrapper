@@ -8,7 +8,8 @@ export function useSmoothHashChange() {
 
       if (anchorTarget.href === `${window.location.origin}/`) {
         e.preventDefault()
-        return window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        return history.replaceState(null, '', '/')
       }
 
       const hash = anchorTarget.hash.trim()
