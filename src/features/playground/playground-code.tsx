@@ -6,11 +6,11 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
-import { Check, Copy } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { Fragment, useMemo, useState } from 'react'
+import { FiCheck, FiCopy } from 'react-icons/fi'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
-import { findLanguage } from './helpers/find-language'
+import { findLanguage, findLanguageIcon } from './helpers/find-language'
 import { platforms } from './platforms'
 import { Platform, PlatformOutputInput, type PlatformOutput } from './types'
 
@@ -129,21 +129,25 @@ function PlatformOutput({
 
   return (
     <div className="bg-card overflow-hidden rounded-md border">
-      <div className="bg-muted/30 flex items-center justify-between border-b">
+      <div className="bg-muted/30 flex items-center justify-between border-b pr-1">
         <div className="flex items-center">
-          {output.map(({ file }) => (
-            <button
-              key={file}
-              onClick={() => setSelectedTab(file)}
-              className={cn(
-                'border-border flex items-center gap-2 border-r px-4 py-2 text-sm font-medium transition-colors',
-                selectedFile.file === file
-                  ? 'bg-background text-foreground border-b-primary border-b-2'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
-              )}
-            >
-              {file}
-            </button>
+          {output.map(({ file }, i, output) => (
+            <Fragment key={file}>
+              <button
+                onClick={() => setSelectedTab(file)}
+                className={cn(
+                  'flex items-center gap-2 border-b border-transparent px-4 py-2 text-sm font-medium transition-colors',
+                  selectedFile.file === file
+                    ? 'bg-background text-foreground border-b-primary'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                )}
+              >
+                {findLanguageIcon(file)}
+                {file}
+              </button>
+
+              {i < output.length - 1 && <div className="bg-border w-[1px] self-stretch" />}
+            </Fragment>
           ))}
         </div>
 
@@ -152,7 +156,7 @@ function PlatformOutput({
             onClick={() => handleCopy(selectedFile.code, selectedFile.file)}
             disabled={copiedFile === selectedFile.file}
             className={cn(
-              'text-muted-foreground flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors',
+              'text-muted-foreground mb-[2px] flex h-8 items-center gap-2 rounded-md px-3 text-xs font-medium transition-colors',
               copiedFile === selectedFile.file
                 ? 'text-success'
                 : 'hover:bg-muted hover:text-foreground'
@@ -160,12 +164,12 @@ function PlatformOutput({
           >
             {copiedFile === selectedFile.file ? (
               <>
-                <Check className="h-4 w-4" />
+                <FiCheck className="text-sm" />
                 Copied!
               </>
             ) : (
               <>
-                <Copy className="h-4 w-4" />
+                <FiCopy className="text-sm" />
                 Copy
               </>
             )}
@@ -178,8 +182,8 @@ function PlatformOutput({
           <SyntaxHighlighter
             showLineNumbers
             style={atomOneDark}
-            language={findLanguage(selectedFile.file)}
             customStyle={{ paddingBottom: '1rem' }}
+            language={findLanguage(selectedFile.file) || undefined}
           >
             {selectedFile.code}
           </SyntaxHighlighter>

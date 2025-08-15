@@ -1,6 +1,9 @@
-export function findLanguage(fileName: string): string | undefined {
+import { DevIconsCSS } from '@/assets'
+import { ReactNode } from 'react'
+
+export function findLanguage(fileName: string): string | null {
   const extension = fileName.split('.').pop()?.toLowerCase()
-  if (!extension) return undefined
+  if (!extension) return null
 
   if (extension === 'ts' || extension === 'tsx') {
     return 'typescript'
@@ -33,4 +36,17 @@ export function findLanguage(fileName: string): string | undefined {
   if (extension === 'md') {
     return 'markdown'
   }
+
+  return null
+}
+
+export function findLanguageIcon(fileName: string): ReactNode {
+  const language = findLanguage(fileName)
+  if (!language) return null
+
+  if (language === 'css') {
+    return <DevIconsCSS />
+  }
+
+  return null
 }

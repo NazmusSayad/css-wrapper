@@ -48,6 +48,8 @@ export function PlaygroundPreview({ maxWidth, padding }: { maxWidth: string; pad
   return (
     <div ref={containerRef} className="relative isolate h-full">
       <div className="inset-0 flex size-full flex-col gap-2 md:absolute">
+        <h3>Preview</h3>
+
         <MaxWidthWrapper
           padding={padding}
           maxWidth={maxWidth}
@@ -117,8 +119,6 @@ export function MaxWidthWrapper({
 
   return (
     <div className="flex h-full flex-col gap-2 overflow-hidden">
-      <div>Max Width Wrapper</div>
-
       <div
         className="bg-secondary h-full min-h-24 origin-left md:min-h-auto"
         style={{ width: `${wrapperViewport}px`, transform: `scaleX(${rawScale})` }}
@@ -147,8 +147,6 @@ export function PaddingWrapper({
 
   return (
     <div className="flex h-full flex-col gap-2 overflow-hidden">
-      <div>Padding Wrapper</div>
-
       <div
         className="bg-secondary h-full min-h-24 origin-left md:min-h-auto"
         style={{
