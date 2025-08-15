@@ -14,7 +14,7 @@ export function Hero() {
             <span className="bg-success absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" />
             <span className="bg-success relative inline-flex size-2 rounded-full" />
           </span>
-          Stop fighting with CSS math. Start building layouts that work.
+          Stop fighting with CSS math.
         </div>
 
         <h1 className="text-foreground mb-6 text-4xl font-bold tracking-tight sm:text-6xl md:text-7xl">
