@@ -6,10 +6,11 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
+import { useTheme } from 'next-themes'
 import { Fragment, useMemo, useState } from 'react'
 import { FiCheck, FiCopy } from 'react-icons/fi'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { atomOneDark, atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { toast } from 'sonner'
 import { findLanguage, findLanguageIcon } from './helpers/find-language'
 import { platforms } from './platforms'
@@ -84,6 +85,7 @@ function PlatformOutput({
   platform: Platform
   mode: 'padding' | 'max-width'
 }) {
+  const { resolvedTheme } = useTheme()
   const [copiedFile, setCopiedFile] = useState<string | null>(null)
   const [selectedTab, setSelectedTab] = useState<string | null>(null)
 
@@ -182,8 +184,8 @@ function PlatformOutput({
         <div className="*:!text-[1rem] *:!leading-[1.6]">
           <SyntaxHighlighter
             showLineNumbers
-            style={atomOneDark}
             customStyle={{ paddingBottom: '1rem' }}
+            style={resolvedTheme === 'dark' ? atomOneDark : atomOneLight}
             language={findLanguage(selectedFile.file) || undefined}
           >
             {selectedFile.code}
