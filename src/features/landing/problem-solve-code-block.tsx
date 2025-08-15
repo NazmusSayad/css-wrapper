@@ -9,10 +9,11 @@ export function ProblemSolveCodeBlock({
   ...props
 }: Omit<ComponentProps<'div'>, 'children'> & { code: string }) {
   return (
-    <div className={cn('rounded-md p-1', className)} {...props}>
+    <div className={cn('max-w-full flex-1 overflow-hidden rounded-md p-1', className)} {...props}>
       <ReactSyntaxHighlighter
         language="css"
         style={atomOneDark}
+        wrapLines
         customStyle={{ background: 'transparent' }}
       >
         {code}

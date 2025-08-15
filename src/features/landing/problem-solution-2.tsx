@@ -2,8 +2,8 @@ import { ProblemSolveCodeBlock } from './problem-solve-code-block'
 
 export function ProblemSolution2() {
   return (
-    <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
-      <div>
+    <div className="flex flex-col gap-8 lg:flex-row">
+      <div className="basis-full">
         <div className="bg-destructive/10 text-destructive mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm">
           <svg className="size-4" fill="currentColor" viewBox="0 0 20 20">
             <path
@@ -84,7 +84,7 @@ export function ProblemSolution2() {
         </div>
       </div>
 
-      <div>
+      <div className="basis-full">
         <div className="bg-success/10 text-success mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm">
           <svg className="size-4" fill="currentColor" viewBox="0 0 20 20">
             <path
