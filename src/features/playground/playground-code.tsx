@@ -53,7 +53,7 @@ export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputInput) 
           value={selectedPlatformId || defaultPlatformId}
           onValueChange={setSelectedPlatformId}
         >
-          <SelectTrigger className="!h-11 !w-full min-w-[10rem] justify-self-end sm:!w-auto">
+          <SelectTrigger className="!h-11 !w-full min-w-[10rem] justify-self-end !px-4 sm:!w-auto">
             <SelectValue placeholder="Select a language" />
           </SelectTrigger>
 

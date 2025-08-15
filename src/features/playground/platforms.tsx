@@ -1,33 +1,115 @@
-import { DevIconsCSS } from '@/assets'
+import { DevIconsCSS, DevIconsReact, DevIconsTailwind } from '@/assets'
+import {
+  generateCSSMaxWidthCode,
+  generateCSSPaddingCode,
+  generateTailwindCssMaxWidthCode,
+  generateTailwindCssPaddingCode,
+} from './helpers/generate-code'
 import { Platform } from './types'
 
 export const platforms: Platform[] = [
   {
     name: (
       <>
-        <DevIconsCSS /> CSS
+        <DevIconsCSS /> Native CSS
       </>
     ),
-    paddingWrapper({ paddingVariable, maxWidthVariable, defaultPadding, defaultMaxWidth }) {
+    paddingWrapper(input) {
       return [
         {
           file: 'style.css',
           code: `.wrapper {
-  padding-inline: max(calc((100% - var(--${maxWidthVariable}, ${defaultMaxWidth})) / 2), var(--${paddingVariable}, ${defaultPadding}));
-  margin-inline: auto;
   width: 100%;
+  margin-inline: auto;
+  padding-inline: ${generateCSSPaddingCode(input)};
 }`,
         },
       ]
     },
-    maxWidthWrapper({ paddingVariable, maxWidthVariable, defaultPadding, defaultMaxWidth }) {
+    maxWidthWrapper(input) {
       return [
         {
           file: 'style.css',
           code: `.wrapper {
-  max-width: min(var(--${maxWidthVariable}, ${defaultMaxWidth}), (100% - var(--${paddingVariable}, ${defaultPadding}) * 2));
-  margin-inline: auto;
   width: 100%;
+  margin-inline: auto;
+  max-width: ${generateCSSMaxWidthCode(input)};
+}`,
+        },
+      ]
+    },
+  },
+
+  {
+    name: (
+      <>
+        <DevIconsReact /> React + <DevIconsCSS /> CSS Modules
+      </>
+    ),
+    paddingWrapper(input) {
+      return [
+        {
+          file: 'index.tsx',
+          code: `import styles from './wrapper.module.css'
+
+export function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={\`\${styles.wrapper} \${typeof className === 'string' ? className : ''}\`} {...props} />
+}`,
+        },
+        {
+          file: 'wrapper.module.css',
+          code: `.wrapper {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: ${generateCSSPaddingCode(input)};
+}`,
+        },
+      ]
+    },
+    maxWidthWrapper(input) {
+      return [
+        {
+          file: 'index.tsx',
+          code: `import styles from './wrapper.module.css'
+
+export function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={\`\${styles.wrapper} \${typeof className === 'string' ? className : ''}\`} {...props} />
+}`,
+        },
+        {
+          file: 'wrapper.module.css',
+          code: `.wrapper {
+  width: 100%;
+  margin-inline: auto;
+  max-width: ${generateCSSMaxWidthCode(input)};
+}`,
+        },
+      ]
+    },
+  },
+
+  {
+    name: (
+      <>
+        <DevIconsReact /> React + <DevIconsTailwind /> Tailwind CSS
+      </>
+    ),
+    paddingWrapper(input) {
+      return [
+        {
+          file: 'index.tsx',
+          code: `export function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={\`mx-auto w-full px-[${generateTailwindCssPaddingCode(input)}] \${typeof className === 'string' ? className : ''}\`} {...props} />
+}`,
+        },
+      ]
+    },
+    maxWidthWrapper(input) {
+      return [
+        {
+          file: 'index.tsx',
+          code: `export function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={\`mx-auto w-full max-w-[${generateTailwindCssMaxWidthCode(input)}] \${typeof className === 'string' ? className : ''}\`} {...props} />
 }`,
         },
       ]
