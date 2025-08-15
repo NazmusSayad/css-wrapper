@@ -26,7 +26,16 @@ export function WrapperPlayground({}) {
           setMaxWidthVariable={setCssVariableMaxWidth}
         />
       }
-      output={<PlaygroundCode padding={valuePadding} maxWidth={valueMaxWidth} />}
+      output={
+        <PlaygroundCode
+          padding={valuePadding}
+          defaultPadding={valuePadding}
+          paddingVariable={cssVariablePadding}
+          maxWidth={valueMaxWidth}
+          defaultMaxWidth={valueMaxWidth}
+          maxWidthVariable={cssVariableMaxWidth}
+        />
+      }
     />
   )
 }

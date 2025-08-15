@@ -12,11 +12,11 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { findLanguage } from './helpers/find-language'
 import { platforms } from './languages'
-import { Platform, type PlatformOutput } from './types'
+import { Platform, PlatformOutputInput, type PlatformOutput } from './types'
 
 const platformWithId = platforms.map((p) => ({ ...p, id: crypto.randomUUID() }))
 
-export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputProps) {
+export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputInput) {
   const [mode, setMode] = useState<'padding' | 'max-width'>('padding')
   const [selectedPlatformId, setSelectedPlatformId] = useState<string>(platformWithId[0].id)
 
@@ -74,17 +74,16 @@ export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputProps) 
   )
 }
 
-export type PlatformOutputProps = {
-  padding: string
-  maxWidth: string
-}
-
 function PlatformOutput({
-  padding,
-  maxWidth,
   platform,
   mode,
-}: PlatformOutputProps & {
+  padding,
+  maxWidth,
+  paddingVariable,
+  maxWidthVariable,
+  defaultPadding,
+  defaultMaxWidth,
+}: PlatformOutputInput & {
   platform: Platform
   mode: 'padding' | 'max-width'
 }) {
@@ -92,9 +91,32 @@ function PlatformOutput({
 
   const output = useMemo(() => {
     return mode === 'padding'
-      ? platform.paddingWrapper(padding, maxWidth)
-      : platform.maxWidthWrapper(padding, maxWidth)
-  }, [mode, platform, padding, maxWidth])
+      ? platform.paddingWrapper({
+          padding,
+          maxWidth,
+          paddingVariable,
+          maxWidthVariable,
+          defaultPadding,
+          defaultMaxWidth,
+        })
+      : platform.maxWidthWrapper({
+          padding,
+          maxWidth,
+          paddingVariable,
+          maxWidthVariable,
+          defaultPadding,
+          defaultMaxWidth,
+        })
+  }, [
+    mode,
+    platform,
+    padding,
+    maxWidth,
+    paddingVariable,
+    maxWidthVariable,
+    defaultPadding,
+    defaultMaxWidth,
+  ])
 
   const handleCopy = async (code: string, file: string) => {
     try {
