@@ -1,8 +1,13 @@
+import { DevIconsCSS } from '@/assets'
 import { Platform } from './types'
 
 export const platforms: Platform[] = [
   {
-    name: 'CSS',
+    name: (
+      <>
+        <DevIconsCSS /> CSS
+      </>
+    ),
     paddingWrapper({ paddingVariable, maxWidthVariable, defaultPadding, defaultMaxWidth }) {
       return [
         {

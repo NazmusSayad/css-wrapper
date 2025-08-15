@@ -11,23 +11,24 @@ import { useMemo, useState } from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { findLanguage } from './helpers/find-language'
-import { platforms } from './languages'
+import { platforms } from './platforms'
 import { Platform, PlatformOutputInput, type PlatformOutput } from './types'
 
-const platformWithId = platforms.map((p) => ({ ...p, id: crypto.randomUUID() }))
+const platformWithId = platforms.map((p, i) => ({ ...p, id: String(i) }))
+const defaultPlatformId = platformWithId[0].id
 
 export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputInput) {
   const [mode, setMode] = useState<'padding' | 'max-width'>('padding')
-  const [selectedPlatformId, setSelectedPlatformId] = useState<string>(platformWithId[0].id)
+  const [selectedPlatformId, setSelectedPlatformId] = useState<string>(defaultPlatformId)
 
   return (
     <>
-      <header className="mb-3 flex items-center justify-between">
-        <div className="flex">
+      <header className="mb-3 grid grid-cols-1 items-center justify-between gap-2 sm:grid-cols-2">
+        <div className="grid w-full grid-cols-2 sm:w-[20rem]">
           <button
             onClick={() => setMode('max-width')}
             className={cn(
-              'border-input flex items-center justify-between gap-2 rounded-l-md border bg-transparent px-3 py-2 text-sm transition-[color,box-shadow] outline-none',
+              'border-input flex h-11 w-full items-center justify-center gap-2 rounded-l-md border bg-transparent px-3 py-2 text-sm transition-[color,box-shadow] outline-none',
               mode === 'max-width'
                 ? 'bg-primary/10 text-foreground shadow-xs'
                 : 'text-muted-foreground hover:text-foreground hover:bg-input/50'
@@ -38,7 +39,7 @@ export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputInput) 
           <button
             onClick={() => setMode('padding')}
             className={cn(
-              'border-input flex items-center justify-between gap-2 rounded-r-md border border-l-0 bg-transparent px-3 py-2 text-sm transition-[color,box-shadow] outline-none',
+              'border-input flex h-11 w-full items-center justify-center gap-2 rounded-r-md border border-l-0 bg-transparent px-3 py-2 text-sm transition-[color,box-shadow] outline-none',
               mode === 'padding'
                 ? 'bg-primary/10 text-foreground shadow-xs'
                 : 'text-muted-foreground hover:text-foreground hover:bg-input/50'
@@ -48,26 +49,27 @@ export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputInput) 
           </button>
         </div>
 
-        <div>
-          <Select value={selectedPlatformId} onValueChange={setSelectedPlatformId}>
-            <SelectTrigger className="!h-11">
-              <SelectValue placeholder="Select a language" />
-            </SelectTrigger>
+        <Select
+          value={selectedPlatformId || defaultPlatformId}
+          onValueChange={setSelectedPlatformId}
+        >
+          <SelectTrigger className="!h-11 !w-full min-w-[10rem] justify-self-end sm:!w-auto">
+            <SelectValue placeholder="Select a language" />
+          </SelectTrigger>
 
-            <SelectContent>
-              {platformWithId.map(({ id, name }) => (
-                <SelectItem key={id} value={id}>
-                  {name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+          <SelectContent align="end">
+            {platformWithId.map(({ id, name }) => (
+              <SelectItem key={id} value={id}>
+                {name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </header>
 
       <PlatformOutput
         mode={mode}
-        platform={platformWithId.find(({ id }) => id === selectedPlatformId) ?? platformWithId[0]}
+        platform={platformWithId.find(({ id }) => id === selectedPlatformId) || platformWithId[0]}
         {...platformOutputProps}
       />
     </>

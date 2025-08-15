@@ -1,7 +1,6 @@
 'use client'
 
 import { useThemeContext } from '@/contexts/theme-context'
-import { getThemeClassName } from '@/helpers/theme'
 import { Fira_Code, Inter } from 'next/font/google'
 
 const inter = Inter({
@@ -17,10 +16,10 @@ const firaCode = Fira_Code({
 const fonts = [inter.variable, firaCode.variable]
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
-  const { theme } = useThemeContext()
+  const { resolvedTheme } = useThemeContext()
 
   return (
-    <html lang="en" className={getThemeClassName(theme)}>
+    <html lang="en" className={resolvedTheme ?? undefined} suppressHydrationWarning>
       <body className={['antialiased', ...fonts].join(' ')}>{children}</body>
     </html>
   )

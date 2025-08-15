@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export type PlatformOutput = {
   file: string
   code: string
@@ -14,7 +16,7 @@ export type PlatformOutputInput = {
 }
 
 export type Platform = {
-  name: string
+  name: ReactNode
   paddingWrapper(input: PlatformOutputInput): PlatformOutput[]
   maxWidthWrapper(input: PlatformOutputInput): PlatformOutput[]
 }

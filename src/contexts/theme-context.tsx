@@ -1,85 +1,80 @@
 /* eslint-disable react-func/max-lines-per-function */
 'use client'
 
-import { getBrowserTheme, getInitialTheme, getResolvedTheme } from '@/helpers/theme'
+import { getBrowserTheme, getInitialTheme } from '@/helpers/theme'
 import { createContext } from 'daily-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 export type BrowserTheme = 'light' | 'dark'
 export type AppTheme = BrowserTheme | 'system'
 
-function getThemeCookie() {
+function getThemeToStorage() {
   if (typeof document !== 'undefined') {
-    return document.cookie
-      .split('; ')
-      .find((row) => row.startsWith('theme='))
-      ?.split('=')[1]
+    return localStorage.getItem('theme')
   }
 
   return null
 }
 
-function setThemeCookie(theme: AppTheme) {
+function setThemeToStorage(theme: AppTheme) {
   if (typeof document !== 'undefined') {
-    document.cookie = `theme=${theme}; path=/; max-age=${60 * 60 * 24 * 365}`
+    localStorage.setItem('theme', theme)
   }
 
   return theme
 }
 
-export const { Provider: ThemeProvider, useContext: useThemeContext } = createContext(
-  ({ initialTheme }: { initialTheme: AppTheme }) => {
-    const [theme, setThemeState] = useState<AppTheme>(initialTheme)
-    const [resolvedTheme, setResolvedTheme] = useState<BrowserTheme | null>(
-      getResolvedTheme(initialTheme)
-    )
+export const { Provider: ThemeContextProvider, useContext: useThemeContext } = createContext(() => {
+  const initialTheme = getInitialTheme(getThemeToStorage())
+  const [theme, setThemeState] = useState<AppTheme>(initialTheme)
 
-    useEffect(() => {
-      const themeCookie = getThemeCookie()
-      if (themeCookie) {
-        setThemeState(getInitialTheme(themeCookie))
-      }
-    }, [])
-
-    useEffect(() => {
-      if (theme === 'system') {
-        if (typeof window !== 'undefined') {
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-          setResolvedTheme(prefersDark ? 'dark' : 'light')
-        }
-      } else {
-        setResolvedTheme(theme)
-      }
-    }, [theme])
-
-    function setTheme(newTheme: AppTheme) {
-      setThemeState(newTheme)
-      setThemeCookie(newTheme)
+  useEffect(() => {
+    const themeCookie = getThemeToStorage()
+    if (themeCookie) {
+      setThemeState(getInitialTheme(themeCookie))
     }
+  }, [])
 
-    function resetTheme() {
-      setThemeState('system')
-      setThemeCookie('system')
-    }
-
-    function toggleTheme() {
-      setThemeState((prev: AppTheme) => {
-        if (prev === 'system') {
-          const browserTheme = getBrowserTheme()
-          return setThemeCookie(browserTheme === 'dark' ? 'light' : 'dark')
-        }
-
-        return setThemeCookie(prev === 'light' ? 'dark' : 'light')
-      })
-    }
-
-    return {
-      theme,
-      resolvedTheme,
-
-      setTheme,
-      resetTheme,
-      toggleTheme,
-    }
+  function setTheme(newTheme: AppTheme) {
+    setThemeState(newTheme)
+    setThemeToStorage(newTheme)
   }
-)
+
+  function resetTheme() {
+    setThemeState('system')
+    setThemeToStorage('system')
+  }
+
+  function toggleTheme() {
+    setThemeState((prev: AppTheme) => {
+      if (prev === 'system') {
+        const browserTheme = getBrowserTheme()
+        return setThemeToStorage(browserTheme === 'dark' ? 'light' : 'dark')
+      }
+
+      return setThemeToStorage(prev === 'light' ? 'dark' : 'light')
+    })
+  }
+
+  const resolvedTheme = useMemo(() => {
+    if (theme === 'system') {
+      if (typeof document !== 'undefined') {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        return prefersDark ? 'dark' : 'light'
+      }
+
+      return null
+    }
+
+    return theme
+  }, [theme])
+
+  return {
+    theme,
+    resolvedTheme,
+
+    setTheme,
+    resetTheme,
+    toggleTheme,
+  }
+})
