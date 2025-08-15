@@ -51,9 +51,9 @@ export function PlaygroundPreview({ maxWidth, padding }: { maxWidth: string; pad
     <div ref={containerRef} className="relative isolate h-full">
       <div className="inset-0 flex size-full flex-col md:absolute">
         <SectionHeader
+          icon={<HiOutlineEye />}
           title="Quick Preview"
           description="See how your wrapper will look at different screen sizes"
-          icon={<HiOutlineEye className="text-muted-foreground size-4" />}
         />
 
         <MaxWidthWrapper

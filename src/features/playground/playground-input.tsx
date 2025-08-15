@@ -32,32 +32,32 @@ export function PlaygroundInput({
     <div className="space-y-8">
       <div>
         <SectionHeader
-          icon={<HiOutlineViewColumns className="text-muted-foreground size-4" />}
+          icon={<HiOutlineViewColumns />}
           title="Container Settings"
           description="Configure your wrapper dimensions and spacing"
         />
 
         <div className="space-y-4 pt-2">
           <div>
-            <Label className="text-muted-foreground flex-col items-start text-xs font-medium tracking-wider uppercase">
+            <Label className="text-foreground/90 flex-col items-start text-xs font-medium tracking-wider uppercase">
               <span className="mb-2 block">Max Width</span>
               <Input
                 value={maxWidth}
                 onChange={(e) => setMaxWidth(e.target.value)}
                 placeholder="1200px"
-                className="border-border/50 bg-background/50 focus:border-secondary focus:bg-background h-11 backdrop-blur-sm transition-all focus:shadow-sm"
+                className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 backdrop-blur-sm transition-all focus:shadow-sm"
               />
             </Label>
           </div>
 
           <div>
-            <Label className="text-muted-foreground flex-col items-start text-xs font-medium tracking-wider uppercase">
+            <Label className="text-foreground/90 flex-col items-start text-xs font-medium tracking-wider uppercase">
               <span className="mb-2 block">Padding</span>
               <Input
                 value={padding}
                 onChange={(e) => setPadding(e.target.value)}
                 placeholder="1rem"
-                className="border-border/50 bg-background/50 focus:border-primary focus:bg-background h-11 backdrop-blur-sm transition-all focus:shadow-sm"
+                className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 backdrop-blur-sm transition-all focus:shadow-sm"
               />
             </Label>
           </div>
@@ -68,7 +68,7 @@ export function PlaygroundInput({
         <AccordionItem value="css-variables" className="border-border/50">
           <AccordionTrigger className="p-0 hover:no-underline">
             <SectionHeader
-              icon={<HiOutlineCog6Tooth className="text-muted-foreground size-4" />}
+              icon={<HiOutlineCog6Tooth />}
               title="CSS Variables (Advanced)"
               description="Customize variable names for your generated code"
             />
@@ -76,23 +76,23 @@ export function PlaygroundInput({
 
           <AccordionContent>
             <div className="space-y-4 pt-2">
-              <Label className="text-muted-foreground flex-col items-start text-xs font-medium tracking-wider uppercase">
+              <Label className="text-foreground/90 flex-col items-start text-xs font-medium tracking-wider uppercase">
                 <span className="mb-2 block">Width Variable Name</span>
                 <Input
                   value={maxWidthVariable}
                   onChange={(e) => setMaxWidthVariable(e.target.value)}
                   placeholder="--max-width"
-                  className="border-border/50 bg-background/50 focus:border-secondary focus:bg-background h-11 backdrop-blur-sm transition-all focus:shadow-sm"
+                  className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 backdrop-blur-sm transition-all focus:shadow-sm"
                 />
               </Label>
 
-              <Label className="text-muted-foreground flex-col items-start text-xs font-medium tracking-wider uppercase">
+              <Label className="text-foreground/90 flex-col items-start text-xs font-medium tracking-wider uppercase">
                 <span className="mb-2 block">Padding Variable Name</span>
                 <Input
                   value={paddingVariable}
                   onChange={(e) => setPaddingVariable(e.target.value)}
                   placeholder="--padding"
-                  className="border-border/50 bg-background/50 focus:border-primary focus:bg-background h-11 backdrop-blur-sm transition-all focus:shadow-sm"
+                  className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 backdrop-blur-sm transition-all focus:shadow-sm"
                 />
               </Label>
             </div>
