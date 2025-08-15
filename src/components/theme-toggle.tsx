@@ -1,26 +1,66 @@
-import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { useTheme } from 'next-themes'
-import { useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import css from './theme-toggle.module.scss'
 
-export function ThemeToggle({}) {
-  const [isMounted, setIsMounted] = useState(false)
+export function ThemeToggle({ className }: { className?: string }) {
   const { resolvedTheme, setTheme } = useTheme()
 
-  useLayoutEffect(() => {
+  const [isMounted, setIsMounted] = useState(false)
+  const [isFocused, setIsFocused] = useState(false)
+  const [isKeyboardUser, setIsKeyboardUser] = useState(false)
+
+  useEffect(() => {
     setIsMounted(true)
+
+    function handleKeyDown() {
+      setIsKeyboardUser(true)
+    }
+
+    function handleMouseDown() {
+      setIsKeyboardUser(false)
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('mousedown', handleMouseDown)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('mousedown', handleMouseDown)
+    }
   }, [])
 
   return (
-    <div className="size-10">
-      {isMounted && (
-        <Button
-          variant="ghost"
-          className="hidden size-10 sm:inline-flex"
-          onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-        >
-          {resolvedTheme === 'dark' ? 'Light' : 'Dark'}
-        </Button>
+    <div
+      className={cn(
+        css.root,
+        'invisible grid w-[72px] place-content-center opacity-0 ring-2 ring-transparent transition-all',
+        isFocused && 'ring-ring rounded-full',
+        isMounted && 'visible opacity-100 delay-300',
+        className
       )}
+    >
+      <label className={css.container} aria-label="Toggle theme">
+        <input
+          id="toggle"
+          type="checkbox"
+          aria-label="Toggle theme"
+          checked={resolvedTheme === 'dark'}
+          onChange={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+          onBlur={() => setIsFocused(false)}
+          onFocus={() => {
+            if (isKeyboardUser) setIsFocused(true)
+          }}
+        />
+
+        <span className={css.slider + ' ' + css.round}>
+          <div className={css.background}></div>
+          <div className={css.star}></div>
+          <div className={css.star}></div>
+        </span>
+
+        <span style={{ display: 'none' }}>Toggle Theme</span>
+      </label>
     </div>
   )
 }

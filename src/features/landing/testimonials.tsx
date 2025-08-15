@@ -1,4 +1,6 @@
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import { Wrapper } from '@/layouts/wrapper'
+import { Heart, Star } from 'lucide-react'
 
 export function Testimonials() {
   const testimonials = [
@@ -64,46 +66,49 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="relative p-6">
-              <div className="relative">
-                <div className="mb-6">
-                  <div className="text-warning mb-4 flex justify-center">
+        <Carousel
+          opts={{
+            align: 'start',
+            loop: true,
+          }}
+          className="mx-auto w-full max-w-5xl"
+        >
+          <CarouselContent>
+            {testimonials.map((testimonial, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <div className="bg-background/50 h-full rounded-lg border p-6 backdrop-blur-sm">
+                  <div className="mb-4 flex justify-center">
                     {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="size-4 fill-current" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
+                      <Star key={i} className="text-warning size-4 fill-current" />
                     ))}
                   </div>
-                  <blockquote className="text-foreground text-center leading-relaxed">
+
+                  <blockquote className="text-foreground mb-6 text-center leading-relaxed">
                     &quot;{testimonial.content}&quot;
                   </blockquote>
-                </div>
 
-                <div className="flex flex-col items-center text-center">
-                  <div className="bg-primary text-primary-foreground mb-3 flex size-12 items-center justify-center rounded-full font-medium">
-                    {testimonial.avatar}
-                  </div>
-                  <div className="text-foreground font-medium">{testimonial.author}</div>
-                  <div className="text-muted-foreground text-sm">
-                    {testimonial.role} at {testimonial.company}
+                  <div className="flex items-center justify-center gap-3">
+                    <div className="bg-primary text-primary-foreground flex size-10 items-center justify-center rounded-full text-sm font-medium">
+                      {testimonial.avatar}
+                    </div>
+                    <div className="text-left">
+                      <div className="text-foreground text-sm font-medium">
+                        {testimonial.author}
+                      </div>
+                      <div className="text-muted-foreground text-xs">
+                        {testimonial.role} at {testimonial.company}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
 
         <div className="mt-16 text-center">
           <div className="bg-primary/10 text-primary inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm">
-            <svg className="size-4" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <Heart className="size-4 fill-current" />
             Join thousands of developers who love CSS Wrapper
           </div>
         </div>
