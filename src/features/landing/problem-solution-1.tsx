@@ -20,9 +20,21 @@ export function ProblemSolution1() {
           dependent on two different things and the padding eats into your content width.
         </p>
 
+        <div className="from-muted/50 mb-4 rounded-md bg-gradient-to-r to-transparent p-4">
+          <h5 className="text-foreground mb-2 text-sm font-semibold">Traditional CSS</h5>
+          <pre className="bg-muted/50 overflow-x-auto rounded p-3 text-xs">
+            <code>{`.wrapper {
+  max-width: 1440px;
+  padding-inline: 2rem;
+  margin-inline: auto;
+}
+/* Result: Only 1376px content! */`}</code>
+          </pre>
+        </div>
+
         <svg
           viewBox="0 0 380 80"
-          className="border-destructive/20 bg-destructive/5 mb-4 h-auto w-full rounded-lg border p-3"
+          className="border-destructive/20 bg-destructive/5 mb-4 h-auto w-full rounded-md border p-3"
         >
           <rect x="50" y="10" width="280" height="50" fill="#f1f5f9" />
           <text x="190" y="40" textAnchor="middle" className="fill-slate-600 text-sm font-semibold">
@@ -63,21 +75,10 @@ export function ProblemSolution1() {
             <span>Padding (both sides):</span>
             <span className="font-mono">- 64px</span>
           </div>
-          <div className="border-destructive bg-destructive/10 text-destructive flex items-center justify-between rounded border p-3 font-semibold">
+          <div className="border-destructive/40 bg-destructive/10 text-destructive flex items-center justify-between rounded border p-3 font-semibold">
             <span>Actual content width:</span>
             <span className="font-mono">1376px</span>
           </div>
-        </div>
-        <div className="from-muted/50 mt-4 rounded-lg bg-gradient-to-r to-transparent p-4">
-          <h5 className="text-foreground mb-2 text-sm font-semibold">Traditional CSS</h5>
-          <pre className="bg-muted/50 overflow-x-auto rounded p-3 text-xs">
-            <code>{`.wrapper {
-  max-width: 1440px;
-  padding-inline: 2rem;
-  margin-inline: auto;
-}
-/* Result: Only 1376px content! */`}</code>
-          </pre>
         </div>
       </div>
 
@@ -98,9 +99,21 @@ export function ProblemSolution1() {
           padding is calculated automatically using percentage-based responsive values.
         </p>
 
+        <div className="from-success/10 mb-4 rounded-md bg-gradient-to-r to-transparent p-4">
+          <h5 className="text-foreground mb-2 text-sm font-semibold">CSS Wrapper Solution</h5>
+          <pre className="bg-success/5 overflow-x-auto rounded p-3 text-xs">
+            <code>{`.wrapper {
+  --max-width: 1440px;
+  width: min(100% - 4vw, var(--max-width));
+  margin-inline: auto;
+}
+/* Result: Exactly 1440px content! */`}</code>
+          </pre>
+        </div>
+
         <svg
           viewBox="0 0 380 80"
-          className="border-success/20 bg-success/5 mb-4 h-auto w-full rounded-lg border p-3"
+          className="border-success/20 bg-success/5 mb-4 h-auto w-full rounded-md border p-3"
         >
           <rect x="10" y="10" width="40" height="50" fill="#10b981" fillOpacity="0.3" />
           <text x="30" y="40" textAnchor="middle" className="fill-success text-[0.625rem]">
@@ -131,21 +144,10 @@ export function ProblemSolution1() {
             <span>Padding:</span>
             <span className="font-mono">Auto-calculated</span>
           </div>
-          <div className="border-success bg-success/10 text-success flex items-center justify-between rounded border p-3 font-semibold">
+          <div className="border-success/40 bg-success/10 text-success flex items-center justify-between rounded border p-3 font-semibold">
             <span>Actual content width:</span>
             <span className="font-mono">1440px ✓</span>
           </div>
-        </div>
-        <div className="from-success/10 mt-4 rounded-lg bg-gradient-to-r to-transparent p-4">
-          <h5 className="text-foreground mb-2 text-sm font-semibold">CSS Wrapper Solution</h5>
-          <pre className="bg-success/5 overflow-x-auto rounded p-3 text-xs">
-            <code>{`.wrapper {
-  --max-width: 1440px;
-  width: min(100% - 4vw, var(--max-width));
-  margin-inline: auto;
-}
-/* Result: Exactly 1440px content! */`}</code>
-          </pre>
         </div>
       </div>
     </div>
