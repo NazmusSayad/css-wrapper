@@ -10,6 +10,7 @@ import { Fragment, useMemo, useState } from 'react'
 import { FiCheck, FiCopy } from 'react-icons/fi'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { toast } from 'sonner'
 import { findLanguage, findLanguageIcon } from './helpers/find-language'
 import { platforms } from './platforms'
 import { Platform, PlatformOutputInput, type PlatformOutput } from './types'
@@ -120,8 +121,8 @@ function PlatformOutput({
       await navigator.clipboard.writeText(code)
       setCopiedFile(file)
       setTimeout(() => setCopiedFile(null), 2000)
-    } catch (err) {
-      console.error('Failed to copy code:', err)
+    } catch {
+      toast.error('Failed to copy code')
     }
   }
 
@@ -129,8 +130,8 @@ function PlatformOutput({
 
   return (
     <div className="bg-card overflow-hidden rounded-md border">
-      <div className="bg-muted/30 flex items-center justify-between border-b pr-1">
-        <div className="flex items-center">
+      <div className="bg-muted/30 flex items-center justify-between gap-2 border-b pr-1">
+        <div className="flex flex-wrap items-center">
           {output.map(({ file }, i, output) => (
             <Fragment key={file}>
               <button

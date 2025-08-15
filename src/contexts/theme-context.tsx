@@ -8,17 +8,19 @@ import { useEffect, useMemo, useState } from 'react'
 export type BrowserTheme = 'light' | 'dark'
 export type AppTheme = BrowserTheme | 'system'
 
+const THEME_STORAGE_KEY = 'local-app-theme'
+
 function getThemeToStorage() {
-  if (typeof document !== 'undefined') {
-    return localStorage.getItem('theme')
+  if (typeof localStorage !== 'undefined') {
+    return localStorage.getItem(THEME_STORAGE_KEY)
   }
 
   return null
 }
 
 function setThemeToStorage(theme: AppTheme) {
-  if (typeof document !== 'undefined') {
-    localStorage.setItem('theme', theme)
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem(THEME_STORAGE_KEY, theme)
   }
 
   return theme
