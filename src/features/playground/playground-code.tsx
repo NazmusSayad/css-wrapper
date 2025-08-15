@@ -25,26 +25,26 @@ export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputInput) 
       <header className="mb-3 flex items-center justify-between">
         <div className="flex">
           <button
-            onClick={() => setMode('padding')}
-            className={cn(
-              'border-input flex items-center justify-between gap-2 rounded-l-md border bg-transparent px-3 py-2 text-sm transition-[color,box-shadow] outline-none',
-              mode === 'padding'
-                ? 'bg-primary/10 text-foreground shadow-xs'
-                : 'text-muted-foreground hover:text-foreground hover:bg-input/50'
-            )}
-          >
-            Padding Wrapper
-          </button>
-          <button
             onClick={() => setMode('max-width')}
             className={cn(
-              'border-input flex items-center justify-between gap-2 rounded-r-md border-t border-r border-b bg-transparent px-3 py-2 text-sm transition-[color,box-shadow] outline-none',
+              'border-input flex items-center justify-between gap-2 rounded-l-md border bg-transparent px-3 py-2 text-sm transition-[color,box-shadow] outline-none',
               mode === 'max-width'
                 ? 'bg-primary/10 text-foreground shadow-xs'
                 : 'text-muted-foreground hover:text-foreground hover:bg-input/50'
             )}
           >
             Max Width Wrapper
+          </button>
+          <button
+            onClick={() => setMode('padding')}
+            className={cn(
+              'border-input flex items-center justify-between gap-2 rounded-r-md border border-l-0 bg-transparent px-3 py-2 text-sm transition-[color,box-shadow] outline-none',
+              mode === 'padding'
+                ? 'bg-primary/10 text-foreground shadow-xs'
+                : 'text-muted-foreground hover:text-foreground hover:bg-input/50'
+            )}
+          >
+            Padding Wrapper
           </button>
         </div>
 
