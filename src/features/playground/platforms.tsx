@@ -42,6 +42,35 @@ export const platforms: Platform[] = [
   },
 
   {
+    id: 'react-tw-css',
+    name: (
+      <>
+        <DevIconsReact /> React + <DevIconsTailwind /> Tailwind CSS
+      </>
+    ),
+    paddingWrapper(input) {
+      return [
+        {
+          file: 'index.tsx',
+          code: `export function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={\`mx-auto w-full px-[${generateTailwindCssPaddingCode(input)}] \${typeof className === 'string' ? className : ''}\`} {...props} />
+}`,
+        },
+      ]
+    },
+    maxWidthWrapper(input) {
+      return [
+        {
+          file: 'index.tsx',
+          code: `export function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={\`mx-auto w-full max-w-[${generateTailwindCssMaxWidthCode(input)}] \${typeof className === 'string' ? className : ''}\`} {...props} />
+}`,
+        },
+      ]
+    },
+  },
+
+  {
     id: 'react-css-modules',
     name: (
       <>
@@ -84,35 +113,6 @@ export function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
   width: 100%;
   margin-inline: auto;
   max-width: ${generateCSSMaxWidthCode(input)};
-}`,
-        },
-      ]
-    },
-  },
-
-  {
-    id: 'react-tw-css',
-    name: (
-      <>
-        <DevIconsReact /> React + <DevIconsTailwind /> Tailwind CSS
-      </>
-    ),
-    paddingWrapper(input) {
-      return [
-        {
-          file: 'index.tsx',
-          code: `export function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div className={\`mx-auto w-full px-[${generateTailwindCssPaddingCode(input)}] \${typeof className === 'string' ? className : ''}\`} {...props} />
-}`,
-        },
-      ]
-    },
-    maxWidthWrapper(input) {
-      return [
-        {
-          file: 'index.tsx',
-          code: `export function Wrapper({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div className={\`mx-auto w-full max-w-[${generateTailwindCssMaxWidthCode(input)}] \${typeof className === 'string' ? className : ''}\`} {...props} />
 }`,
         },
       ]

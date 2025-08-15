@@ -1,4 +1,4 @@
-import { DevIconsCSS } from '@/assets'
+import { DevIconsCSS, DevIconsJS, DevIconsTS } from '@/assets'
 import { ReactNode } from 'react'
 
 export function findLanguage(fileName: string): string | null {
@@ -46,6 +46,14 @@ export function findLanguageIcon(fileName: string): ReactNode {
 
   if (language === 'css') {
     return <DevIconsCSS />
+  }
+
+  if (language === 'typescript') {
+    return <DevIconsTS />
+  }
+
+  if (language === 'javascript') {
+    return <DevIconsJS />
   }
 
   return null
