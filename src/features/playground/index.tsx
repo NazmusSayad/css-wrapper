@@ -18,6 +18,20 @@ export function WrapperPlayground({}) {
         <PlaygroundInput
           padding={valuePadding}
           maxWidth={valueMaxWidth}
+          paddingTips={[
+            {
+              type: 'info',
+              text: 'Padding is the space between the content and the border of the container. It is a percentage of the container width.',
+            },
+            {
+              type: 'warning',
+              text: 'Padding is the space between the content and the border of the container. It is a percentage of the container width.',
+            },
+            {
+              type: 'error',
+              text: 'Padding is the space between the content and the border of the container. It is a percentage of the container width.',
+            },
+          ]}
           paddingVariable={cssVariablePadding}
           maxWidthVariable={cssVariableMaxWidth}
           setPadding={setValuePadding}
