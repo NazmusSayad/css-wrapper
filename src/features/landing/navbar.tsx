@@ -99,9 +99,11 @@ export function Navbar() {
             </button>
           </div>
         </div>
+      </Wrapper>
 
-        {isMenuOpen && (
-          <div className="border-t py-4 md:hidden">
+      {isMenuOpen && (
+        <div className="bg-background border-t py-4 md:hidden">
+          <Wrapper>
             <nav className="flex flex-col gap-4">
               <a
                 href="#playground"
@@ -132,9 +134,9 @@ export function Navbar() {
                 Why
               </a>
             </nav>
-          </div>
-        )}
-      </Wrapper>
+          </Wrapper>
+        </div>
+      )}
     </header>
   )
 }
