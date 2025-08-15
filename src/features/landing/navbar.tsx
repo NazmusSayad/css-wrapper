@@ -12,6 +12,8 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
+    setScrollTop(window.scrollY)
+
     function handleScroll() {
       setScrollTop(window.scrollY)
     }
@@ -72,7 +74,12 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Button variant="ghost" className="hidden sm:inline-flex" onClick={toggleTheme}>
+            <Button
+              variant="ghost"
+              className="hidden sm:inline-flex"
+              suppressHydrationWarning
+              onClick={toggleTheme}
+            >
               {theme === 'dark' ? 'Light' : 'Dark'}
             </Button>
 
