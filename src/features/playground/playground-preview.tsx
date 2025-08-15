@@ -118,16 +118,18 @@ export function MaxWidthWrapper({
   const contentPadding = (wrapperViewport - contentWidth) / 2
 
   return (
-    <div className="flex h-full flex-col gap-2 overflow-hidden">
-      <div
-        className="bg-secondary h-full min-h-24 origin-left md:min-h-auto"
-        style={{ width: `${wrapperViewport}px`, transform: `scaleX(${rawScale})` }}
-      >
+    <div className="flex h-full flex-col gap-2">
+      <div className="h-full overflow-hidden rounded-md">
         <div
-          ref={contentRef}
-          className="bg-primary mx-auto h-full"
-          style={{ maxWidth: `min(${maxWidth}, (100% - (${padding} * 2)))` }}
-        />
+          className="bg-secondary h-full min-h-32 origin-left py-4 md:min-h-auto"
+          style={{ width: `${wrapperViewport}px`, transform: `scaleX(${rawScale})` }}
+        >
+          <div
+            ref={contentRef}
+            className="bg-primary mx-auto h-full"
+            style={{ maxWidth: `min(${maxWidth}, (100% - (${padding} * 2)))` }}
+          />
+        </div>
       </div>
 
       <NumbersView padding={Math.max(0, contentPadding)} contentWidth={Math.max(0, contentWidth)} />
