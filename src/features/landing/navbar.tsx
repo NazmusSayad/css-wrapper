@@ -1,6 +1,7 @@
 'use client'
 
 import { DevIconsCSS } from '@/assets'
+import { Hamburger1 } from '@/components/hamburgers'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { Wrapper } from '@/layouts/wrapper'
@@ -10,6 +11,14 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 const navItems = [
+  {
+    label: 'Home',
+    href: '/',
+  },
+  {
+    label: 'Playground',
+    href: '#playground',
+  },
   {
     label: 'Why?',
     href: '#why',
@@ -50,19 +59,20 @@ export function Navbar() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav className="hidden items-center md:flex">
             {navItems.map((item) => (
-              <a
+              <Button
                 key={item.href}
-                href={item.href}
-                className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+                variant="ghost"
+                asChild
+                className="text-muted-foreground hover:text-foreground"
               >
-                {item.label}
-              </a>
+                <Link href={item.href}>{item.label}</Link>
+              </Button>
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             <div className="hidden sm:block">
               <ThemeToggle />
             </div>
@@ -80,23 +90,16 @@ export function Navbar() {
               </a>
             </Button>
 
-            <Button asChild>
+            <Button asChild className="hidden min-[22.5rem]:flex">
               <a href="#playground">Get Started</a>
             </Button>
 
             <button
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
+              className="text-[2.5rem] md:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <svg className="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d={isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
-                />
-              </svg>
+              <Hamburger1 isActive={isMenuOpen} />
             </button>
           </div>
         </div>
@@ -113,40 +116,23 @@ export function Navbar() {
           >
             <Wrapper>
               <motion.nav
-                className="flex flex-col gap-4"
+                className="flex flex-col"
                 exit={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 initial={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.2, delay: 0.1 }}
               >
-                <Link
-                  href="#playground"
-                  className="text-muted-foreground text-sm font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Playground
-                </Link>
-                <Link
-                  href="#problems"
-                  className="text-muted-foreground text-sm font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Problems
-                </Link>
-                <Link
-                  href="#solutions"
-                  className="text-muted-foreground text-sm font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Solutions
-                </Link>
-                <Link
-                  href="#why"
-                  className="text-muted-foreground text-sm font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Why
-                </Link>
+                {navItems.map((item) => (
+                  <Button
+                    asChild
+                    key={item.href}
+                    variant="ghost"
+                    className="text-muted-foreground w-full justify-start"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <Link href={item.href}>{item.label}</Link>
+                  </Button>
+                ))}
               </motion.nav>
             </Wrapper>
           </motion.div>
