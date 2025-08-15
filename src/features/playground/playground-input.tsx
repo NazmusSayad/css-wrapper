@@ -12,6 +12,12 @@ import { SectionHeader } from './components/section-header'
 export function PlaygroundInput({
   padding,
   maxWidth,
+  paddingTips,
+  paddingError,
+  paddingWarning,
+  maxWidthTips,
+  maxWidthError,
+  maxWidthWarning,
   paddingVariable,
   maxWidthVariable,
   setPadding,
@@ -20,9 +26,18 @@ export function PlaygroundInput({
   setMaxWidthVariable,
 }: {
   padding: string
+  paddingTips?: string
+  paddingError?: string
+  paddingWarning?: string
+
   maxWidth: string
+  maxWidthTips?: string
+  maxWidthError?: string
+  maxWidthWarning?: string
+
   paddingVariable: string
   maxWidthVariable: string
+
   setPadding: (padding: string) => void
   setMaxWidth: (maxWidth: string) => void
   setPaddingVariable: (paddingVariable: string) => void
