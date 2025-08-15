@@ -11,12 +11,14 @@ import { useMemo, useState } from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { findLanguage } from './helpers/find-language'
-import { Platform, type PlatformOutput } from './interface'
 import { platforms } from './languages'
+import { Platform, type PlatformOutput } from './types'
+
+const platformWithId = platforms.map((p) => ({ ...p, id: crypto.randomUUID() }))
 
 export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputProps) {
   const [mode, setMode] = useState<'padding' | 'max-width'>('padding')
-  const [platform, setPlatform] = useState<string>(platforms[0].id)
+  const [selectedPlatformId, setSelectedPlatformId] = useState<string>(platformWithId[0].id)
 
   return (
     <>
@@ -47,13 +49,13 @@ export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputProps) 
         </div>
 
         <div>
-          <Select value={platform} onValueChange={setPlatform}>
+          <Select value={selectedPlatformId} onValueChange={setSelectedPlatformId}>
             <SelectTrigger className="!h-11">
               <SelectValue placeholder="Select a language" />
             </SelectTrigger>
 
             <SelectContent>
-              {platforms.map(({ id, name }) => (
+              {platformWithId.map(({ id, name }) => (
                 <SelectItem key={id} value={id}>
                   {name}
                 </SelectItem>
@@ -65,7 +67,7 @@ export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputProps) 
 
       <PlatformOutput
         mode={mode}
-        platform={platforms.find(({ id }) => id === platform) ?? platforms[0]}
+        platform={platformWithId.find(({ id }) => id === selectedPlatformId) ?? platformWithId[0]}
         {...platformOutputProps}
       />
     </>
@@ -90,8 +92,8 @@ function PlatformOutput({
 
   const output = useMemo(() => {
     return mode === 'padding'
-      ? platform.generatePaddingWrapper(padding, maxWidth)
-      : platform.generateMaxWidthWrapper(padding, maxWidth)
+      ? platform.paddingWrapper(padding, maxWidth)
+      : platform.maxWidthWrapper(padding, maxWidth)
   }, [mode, platform, padding, maxWidth])
 
   const handleCopy = async (code: string, file: string) => {
