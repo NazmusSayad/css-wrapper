@@ -45,7 +45,7 @@ export function Hero() {
           math, no more surprises.
         </p>
 
-        <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+        <div className="flex flex-col justify-center gap-4 min-[22.5rem]:flex-row">
           <Button size="lg" className="text-base" asChild>
             <a href="#playground">Try it now</a>
           </Button>
