@@ -2,14 +2,14 @@
 
 import { DevIconsCSS } from '@/assets'
 import { Button } from '@/components/ui/button'
-import { useThemeContext } from '@/contexts/theme-context'
 import { Wrapper } from '@/layouts/wrapper'
 import { cn } from '@/lib/utils'
+import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export function Navbar() {
-  const { theme, toggleTheme } = useThemeContext()
+  const { theme, setTheme } = useTheme()
   const [scrollTop, setScrollTop] = useState<number | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -67,7 +67,7 @@ export function Navbar() {
               variant="ghost"
               className="hidden sm:inline-flex"
               suppressHydrationWarning
-              onClick={toggleTheme}
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
               {theme === 'dark' ? 'Light' : 'Dark'}
             </Button>

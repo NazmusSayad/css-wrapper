@@ -1,7 +1,6 @@
 'use client'
 
 import { Toaster } from '@/components/ui/sonner'
-import { useThemeContext } from '@/contexts/theme-context'
 import { Fira_Code, Inter } from 'next/font/google'
 import { PropsWithChildren } from 'react'
 
@@ -19,10 +18,8 @@ const fonts = [inter.variable, firaCode.variable]
 const fontsClassName = ['antialiased', ...fonts].join(' ')
 
 export function AppLayout({ children }: PropsWithChildren) {
-  const { resolvedTheme } = useThemeContext()
-
   return (
-    <html lang="en" className={resolvedTheme ?? undefined} suppressHydrationWarning>
+    <html lang="en">
       <body className={fontsClassName}>
         {children}
         <Toaster richColors />
