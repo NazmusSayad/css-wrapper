@@ -1,14 +1,34 @@
+'use client'
+
+/* eslint-disable react/no-unknown-property */
+
 import { Button } from '@/components/ui/button'
 import { Wrapper } from '@/layouts/wrapper'
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-28">
-      <div className="h-20" />
-
+    <section className="relative -mb-20 overflow-hidden py-20 sm:-mb-24 sm:py-28">
       <div className="from-primary/5 via-background to-accent/5 absolute inset-0 -z-10 bg-gradient-to-br">
         <div className="bg-grid-pattern pointer-events-none absolute inset-0" />
       </div>
+
+      <style jsx>
+        {`
+          .bg-grid-pattern {
+            background-image:
+              linear-gradient(#00000010 1px, transparent 1px),
+              linear-gradient(90deg, #00000010 1px, transparent 1px);
+            background-size: 20px 20px;
+          }
+
+          :global(.dark) .bg-grid-pattern {
+            background-image:
+              linear-gradient(#ffffff10 1px, transparent 1px),
+              linear-gradient(90deg, #ffffff10 1px, transparent 1px);
+            background-size: 20px 20px;
+          }
+        `}
+      </style>
 
       <Wrapper className="text-center [--max-width:60rem]">
         <div className="bg-secondary/50 text-secondary-foreground mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
