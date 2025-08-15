@@ -6,14 +6,14 @@ import styles from './styles.module.scss'
 
 export function Hero() {
   return (
-    <section className="relative -mb-8 overflow-hidden py-32 sm:-mb-12 sm:py-40">
+    <section className="relative -mb-8 overflow-hidden py-28 sm:-mb-12 sm:py-36">
       <div className="from-primary/5 via-background to-accent/5 absolute inset-0 -z-10 bg-gradient-to-br [mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)] [mask-size:100%_100%] [mask-repeat:no-repeat] blur-[2px]">
         <div className={cn(styles.bgGridPattern, 'pointer-events-none absolute inset-0')} />
       </div>
 
       <HeroCodeAnimations />
 
-      <Wrapper className="text-center [--max-width:60rem]">
+      <Wrapper className="text-center [--max-width:60rem] sm:pb-12">
         <div className="bg-secondary/50 text-secondary-foreground mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
           <span className="relative flex size-2">
             <span className="bg-success absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" />

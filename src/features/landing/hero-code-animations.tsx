@@ -191,42 +191,50 @@ export function HeroCodeAnimations() {
           grid
         </div>
 
-        <div className="binary-flicker absolute bottom-[40%] left-[5%] rounded border px-2 py-1">
+        <div className="binary-flicker absolute bottom-[42%] left-[7%] rounded border px-2 py-1">
           margin
         </div>
-        <div className="float-up absolute right-[8%] bottom-[35%] rounded border px-2 py-1">
+        <div className="float-up absolute right-[6%] bottom-[38%] rounded border px-2 py-1">
           position
         </div>
-        <div className="slide-fade absolute bottom-[30%] left-[12%] rounded border px-2 py-1">
+        <div className="slide-fade absolute bottom-[33%] left-[11%] rounded border px-2 py-1">
           height
         </div>
-        <div className="scale-pulse absolute right-[15%] bottom-[25%] rounded border px-2 py-1">
+        <div className="scale-pulse absolute right-[14%] bottom-[28%] rounded border px-2 py-1">
           responsive
         </div>
-        <div className="binary-fade absolute bottom-[20%] left-[18%] rounded border px-2 py-1">
+        <div className="binary-fade absolute bottom-[24%] left-[19%] rounded border px-2 py-1">
           transform
         </div>
-        <div className="wave-motion absolute right-[12%] bottom-[15%] rounded border px-2 py-1">
+        <div className="wave-motion absolute right-[9%] bottom-[19%] rounded border px-2 py-1">
           opacity
         </div>
-        <div className="binary-slide absolute bottom-[10%] left-[22%] rounded border px-2 py-1">
+        <div className="binary-slide absolute bottom-[14%] left-[26%] rounded border px-2 py-1">
           filter
         </div>
-        <div className="float-up absolute right-[25%] bottom-[8%] rounded border px-2 py-1">
+        <div className="float-up absolute right-[22%] bottom-[11%] rounded border px-2 py-1">
           shadow
         </div>
-        <div className="scale-pulse absolute bottom-[5%] left-[15%] rounded border px-2 py-1">
+        <div className="scale-pulse absolute bottom-[7%] left-[17%] rounded border px-2 py-1">
           blur
         </div>
-
-        <div className="wave-motion absolute bottom-[12%] left-[45%] rounded border px-2 py-1">
+        <div className="wave-motion absolute bottom-[16%] left-[63%] rounded border px-2 py-1">
           border
         </div>
-        <div className="binary-slide absolute bottom-[6%] left-[55%] rounded border px-2 py-1">
+        <div className="binary-slide absolute bottom-[9%] left-[58%] rounded border px-2 py-1">
           radius
         </div>
-        <div className="float-up absolute bottom-[18%] left-[50%] rounded border px-2 py-1">
+        <div className="float-up absolute bottom-[21%] left-[67%] rounded border px-2 py-1">
           outline
+        </div>
+        <div className="binary-fade absolute right-[31%] bottom-[13%] rounded border px-2 py-1">
+          z-index
+        </div>
+        <div className="slide-fade absolute bottom-[4%] left-[72%] rounded border px-2 py-1">
+          rotate
+        </div>
+        <div className="scale-pulse absolute right-[18%] bottom-[26%] rounded border px-2 py-1">
+          cursor
         </div>
       </div>
 
@@ -234,13 +242,15 @@ export function HeroCodeAnimations() {
         <div className="binary-flicker absolute top-[20%] left-[8%]">01001000</div>
         <div className="binary-slide absolute top-[30%] right-[12%]">11010011</div>
 
-        <div className="binary-fade absolute right-[10%] bottom-[30%]">10001111</div>
-        <div className="binary-flicker absolute bottom-[20%] left-[25%]">11001010</div>
-        <div className="binary-slide absolute right-[20%] bottom-[12%]">01011100</div>
-        <div className="binary-fade absolute bottom-[6%] left-[30%]">10110010</div>
-
-        <div className="binary-flicker absolute bottom-[15%] left-[48%]">11100101</div>
-        <div className="binary-slide absolute bottom-[8%] left-[52%]">01001110</div>
+        <div className="binary-fade absolute right-[11%] bottom-[31%]">10001111</div>
+        <div className="binary-flicker absolute bottom-[23%] left-[28%]">11001010</div>
+        <div className="binary-slide absolute right-[19%] bottom-[17%]">01011100</div>
+        <div className="binary-fade absolute bottom-[8%] left-[33%]">10110010</div>
+        <div className="binary-flicker absolute bottom-[18%] left-[51%]">11100101</div>
+        <div className="binary-slide absolute bottom-[12%] left-[47%]">01001110</div>
+        <div className="binary-fade absolute bottom-[5%] left-[61%]">10101011</div>
+        <div className="binary-flicker absolute right-[7%] bottom-[29%]">11010100</div>
+        <div className="binary-slide absolute right-[28%] bottom-[15%]">01110010</div>
       </div>
 
       <div className="cursor-glow absolute top-20 left-[50%] h-4 w-px bg-current" />
