@@ -22,7 +22,7 @@ export function PlaygroundCode({ ...platformOutputProps }: PlatformOutputInput) 
 
   return (
     <>
-      <header className="mb-6 flex items-center justify-between">
+      <header className="mb-3 flex items-center justify-between">
         <div className="flex">
           <button
             onClick={() => setMode('padding')}
@@ -129,11 +129,12 @@ function PlatformOutput({
   }
 
   return (
-    <div className="space-y-4">
+    <div className="bg-card overflow-hidden rounded-md border">
       {output.map(({ file, code }) => (
-        <div key={file} className="bg-card overflow-hidden rounded-md border">
-          <div className="bg-muted/30 flex items-center justify-between border-b px-4 py-1">
+        <div key={file}>
+          <div className="flex items-center justify-between border-b px-4 py-1">
             <div className="text-muted-foreground text-sm font-medium">{file}</div>
+
             <button
               onClick={() => handleCopy(code, file)}
               disabled={copiedFile === file}
@@ -158,11 +159,10 @@ function PlatformOutput({
 
           <div className="*:!text-[1rem] *:!leading-[1.6]">
             <SyntaxHighlighter
-              wrapLines
-              wrapLongLines
               showLineNumbers
               style={atomOneDark}
               language={findLanguage(file)}
+              customStyle={{ paddingBottom: '1rem' }}
             >
               {code}
             </SyntaxHighlighter>
