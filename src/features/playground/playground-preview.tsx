@@ -7,7 +7,7 @@ import { HiOutlineEye } from 'react-icons/hi2'
 import { SectionHeader } from './components/section-header'
 
 export function PlaygroundPreview({ maxWidth, padding }: { maxWidth: string; padding: string }) {
-  const [wrapperViewport, setWrapperViewport] = useState(1600)
+  const [wrapperViewport, setWrapperViewport] = useState(1920)
   const [containerWidth, setContainerWidth] = useState(0)
 
   const [_paddingWrapperWidth, setPaddingWrapperWidth] = useState(0)

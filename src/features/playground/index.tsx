@@ -8,7 +8,7 @@ import { PlaygroundPreview } from './playground-preview'
 
 export function WrapperPlayground({}) {
   const [valuePadding, setValuePadding] = useState('4%')
-  const [valueMaxWidth, setValueMaxWidth] = useState('75rem')
+  const [valueMaxWidth, setValueMaxWidth] = useState('80rem')
 
   const [cssVariablePadding, setCssVariablePadding] = useState('padding')
   const [cssVariableMaxWidth, setCssVariableMaxWidth] = useState('max-width')
