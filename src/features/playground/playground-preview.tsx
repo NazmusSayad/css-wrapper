@@ -2,6 +2,8 @@ import { FadedDecimalNumber } from '@/components/animate-number'
 import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import { useLayoutEffect, useRef, useState } from 'react'
+import { HiOutlineEye } from 'react-icons/hi2'
+import { SectionHeader } from './components/section-header'
 
 export function PlaygroundPreview({ maxWidth, padding }: { maxWidth: string; padding: string }) {
   const [wrapperViewport, setWrapperViewport] = useState(1600)
@@ -47,8 +49,12 @@ export function PlaygroundPreview({ maxWidth, padding }: { maxWidth: string; pad
 
   return (
     <div ref={containerRef} className="relative isolate h-full">
-      <div className="inset-0 flex size-full flex-col gap-2 md:absolute">
-        <h3>Preview</h3>
+      <div className="inset-0 flex size-full flex-col md:absolute">
+        <SectionHeader
+          title="Quick Preview"
+          description="See how your wrapper will look at different screen sizes"
+          icon={<HiOutlineEye className="text-muted-foreground size-4" />}
+        />
 
         <MaxWidthWrapper
           padding={padding}
@@ -67,6 +73,8 @@ export function PlaygroundPreview({ maxWidth, padding }: { maxWidth: string; pad
           contentWidth={_paddingWrapperWidth}
           contentRef={paddingWrapperContentRef}
         /> */}
+
+        <hr className="my-4" />
 
         <div className="flex flex-col gap-3">
           <Label className="text-muted-foreground text-xs">Browser Width</Label>

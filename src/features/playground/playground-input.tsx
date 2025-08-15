@@ -1,6 +1,13 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { HiOutlineArrowsPointingOut, HiOutlineViewColumns } from 'react-icons/hi2'
+import { HiOutlineCog6Tooth, HiOutlineViewColumns } from 'react-icons/hi2'
+import { SectionHeader } from './components/section-header'
 
 export function PlaygroundInput({
   padding,
@@ -22,74 +29,76 @@ export function PlaygroundInput({
   setMaxWidthVariable: (maxWidthVariable: string) => void
 }) {
   return (
-    <div className="space-y-10">
+    <div className="space-y-8">
       <div>
-        <div className="mb-6">
-          <h3 className="text-foreground mb-3 flex items-center gap-3 text-base font-semibold">
-            <div className="bg-primary/10 rounded-lg p-2">
-              <HiOutlineViewColumns className="text-primary size-4" />
-            </div>
-            <span className="text-foreground font-semibold">Width Settings</span>
-          </h3>
-          <p className="text-muted-foreground mb-4 text-xs">Define maximum container width</p>
-        </div>
+        <SectionHeader
+          icon={<HiOutlineViewColumns className="text-muted-foreground size-4" />}
+          title="Container Settings"
+          description="Configure your wrapper dimensions and spacing"
+        />
 
-        <div className="space-y-4">
-          <Label className="text-muted-foreground flex-col items-start text-xs font-medium tracking-wider uppercase">
-            <span className="mb-2 block">CSS Value</span>
-            <Input
-              value={maxWidth}
-              onChange={(e) => setMaxWidth(e.target.value)}
-              placeholder="1200px"
-              className="border-border/50 bg-background/50 focus:border-secondary focus:bg-background h-11 backdrop-blur-sm transition-all focus:shadow-sm"
-            />
-          </Label>
+        <div className="space-y-4 pt-2">
+          <div>
+            <Label className="text-muted-foreground flex-col items-start text-xs font-medium tracking-wider uppercase">
+              <span className="mb-2 block">Max Width</span>
+              <Input
+                value={maxWidth}
+                onChange={(e) => setMaxWidth(e.target.value)}
+                placeholder="1200px"
+                className="border-border/50 bg-background/50 focus:border-secondary focus:bg-background h-11 backdrop-blur-sm transition-all focus:shadow-sm"
+              />
+            </Label>
+          </div>
 
-          <Label className="text-muted-foreground flex-col items-start text-xs font-medium tracking-wider uppercase">
-            <span className="mb-2 block">CSS Variable Name</span>
-            <Input
-              value={maxWidthVariable}
-              onChange={(e) => setMaxWidthVariable(e.target.value)}
-              placeholder="--max-width"
-              className="border-border/50 bg-background/50 focus:border-secondary focus:bg-background h-11 backdrop-blur-sm transition-all focus:shadow-sm"
-            />
-          </Label>
+          <div>
+            <Label className="text-muted-foreground flex-col items-start text-xs font-medium tracking-wider uppercase">
+              <span className="mb-2 block">Padding</span>
+              <Input
+                value={padding}
+                onChange={(e) => setPadding(e.target.value)}
+                placeholder="1rem"
+                className="border-border/50 bg-background/50 focus:border-primary focus:bg-background h-11 backdrop-blur-sm transition-all focus:shadow-sm"
+              />
+            </Label>
+          </div>
         </div>
       </div>
 
-      <div>
-        <div className="mb-6">
-          <h3 className="text-foreground mb-3 flex items-center gap-3 text-base font-semibold">
-            <div className="bg-primary/10 rounded-lg p-2">
-              <HiOutlineArrowsPointingOut className="text-primary size-4" />
+      <Accordion type="single" collapsible>
+        <AccordionItem value="css-variables" className="border-border/50">
+          <AccordionTrigger className="p-0 hover:no-underline">
+            <SectionHeader
+              icon={<HiOutlineCog6Tooth className="text-muted-foreground size-4" />}
+              title="CSS Variables (Advanced)"
+              description="Customize variable names for your generated code"
+            />
+          </AccordionTrigger>
+
+          <AccordionContent>
+            <div className="space-y-4 pt-2">
+              <Label className="text-muted-foreground flex-col items-start text-xs font-medium tracking-wider uppercase">
+                <span className="mb-2 block">Width Variable Name</span>
+                <Input
+                  value={maxWidthVariable}
+                  onChange={(e) => setMaxWidthVariable(e.target.value)}
+                  placeholder="--max-width"
+                  className="border-border/50 bg-background/50 focus:border-secondary focus:bg-background h-11 backdrop-blur-sm transition-all focus:shadow-sm"
+                />
+              </Label>
+
+              <Label className="text-muted-foreground flex-col items-start text-xs font-medium tracking-wider uppercase">
+                <span className="mb-2 block">Padding Variable Name</span>
+                <Input
+                  value={paddingVariable}
+                  onChange={(e) => setPaddingVariable(e.target.value)}
+                  placeholder="--padding"
+                  className="border-border/50 bg-background/50 focus:border-primary focus:bg-background h-11 backdrop-blur-sm transition-all focus:shadow-sm"
+                />
+              </Label>
             </div>
-            <span className="text-foreground font-semibold">Padding Settings</span>
-          </h3>
-          <p className="text-muted-foreground mb-4 text-xs">Configure spacing around content</p>
-        </div>
-
-        <div className="space-y-4">
-          <Label className="text-muted-foreground flex-col items-start text-xs font-medium tracking-wider uppercase">
-            <span className="mb-2 block">CSS Value</span>
-            <Input
-              value={padding}
-              onChange={(e) => setPadding(e.target.value)}
-              placeholder="1rem"
-              className="border-border/50 bg-background/50 focus:border-primary focus:bg-background h-11 backdrop-blur-sm transition-all focus:shadow-sm"
-            />
-          </Label>
-
-          <Label className="text-muted-foreground flex-col items-start text-xs font-medium tracking-wider uppercase">
-            <span className="mb-2 block">CSS Variable Name</span>
-            <Input
-              value={paddingVariable}
-              onChange={(e) => setPaddingVariable(e.target.value)}
-              placeholder="--padding"
-              className="border-border/50 bg-background/50 focus:border-primary focus:bg-background h-11 backdrop-blur-sm transition-all focus:shadow-sm"
-            />
-          </Label>
-        </div>
-      </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   )
 }
