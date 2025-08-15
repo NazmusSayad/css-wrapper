@@ -1,4 +1,4 @@
-import { AnimatedNumber } from '@/components/animate-number'
+import { FadedDecimalNumber } from '@/components/animate-number'
 import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import { useLayoutEffect, useRef, useState } from 'react'
@@ -170,9 +170,9 @@ export function PaddingWrapper({
 function NumbersView({ padding, contentWidth }: { padding: number; contentWidth: number }) {
   return (
     <div className="flex items-center justify-between font-mono text-sm">
-      <AnimatedNumber value={padding} formatter={(value) => +value.toFixed(1)} />
-      <AnimatedNumber value={contentWidth} formatter={(value) => +value.toFixed(1)} />
-      <AnimatedNumber value={padding} formatter={(value) => +value.toFixed(1)} />
+      <FadedDecimalNumber value={padding} formatter={(value) => +value.toFixed(1)} />
+      <FadedDecimalNumber value={contentWidth} formatter={(value) => +value.toFixed(1)} />
+      <FadedDecimalNumber value={padding} formatter={(value) => +value.toFixed(1)} />
     </div>
   )
 }

@@ -31,3 +31,25 @@ export function AnimatedNumber({
 
   return <motion.span>{display}</motion.span>
 }
+
+export function FadedDecimalNumber({
+  value,
+  formatter,
+}: {
+  value: number
+  formatter?: (value: number) => number
+}) {
+  const [integer, decimal = '0'] = String(formatter ? formatter(value) : value).split('.')
+
+  return (
+    <span>
+      <span>{integer}</span>
+
+      {decimal && (
+        <span className="text-muted-foreground">
+          .<span>{decimal}</span>
+        </span>
+      )}
+    </span>
+  )
+}
