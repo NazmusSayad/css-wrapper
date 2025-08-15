@@ -4,7 +4,7 @@ export const dynamic = 'force-static'
 
 export default function HomePage() {
   return (
-    <>
+    <div>
       <Navbar />
 
       <main>
@@ -15,6 +15,6 @@ export default function HomePage() {
       </main>
 
       <Footer />
-    </>
+    </div>
   )
 }

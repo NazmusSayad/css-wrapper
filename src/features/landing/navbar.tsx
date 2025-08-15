@@ -20,7 +20,7 @@ const navItems = [
     href: '#playground',
   },
   {
-    label: 'Why?',
+    label: 'Learn',
     href: '#why',
   },
 ]
@@ -58,7 +58,7 @@ export function Navbar() {
 
       <Wrapper>
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" scroll={false} className="flex items-center gap-2">
             <DevIconsCSS className="size-5" />
             <span className="font-mono text-base font-semibold uppercase sm:text-lg">
               CSS Wrapper
@@ -73,7 +73,9 @@ export function Navbar() {
                 asChild
                 className="text-muted-foreground hover:text-foreground"
               >
-                <Link href={item.href}>{item.label}</Link>
+                <Link href={item.href} scroll={false}>
+                  {item.label}
+                </Link>
               </Button>
             ))}
           </nav>
@@ -136,7 +138,9 @@ export function Navbar() {
                     className="text-muted-foreground w-full justify-start"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <Link href={item.href}>{item.label}</Link>
+                    <Link href={item.href} scroll={false}>
+                      {item.label}
+                    </Link>
                   </Button>
                 ))}
               </motion.nav>

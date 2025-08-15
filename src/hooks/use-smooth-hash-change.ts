@@ -2,21 +2,30 @@ import { useEffect } from 'react'
 
 export function useSmoothHashChange() {
   useEffect(() => {
-    function handleHashChange(e: HashChangeEvent) {
-      e.preventDefault()
+    function handleClick(e: MouseEvent) {
+      const anchorTarget = (e.target as HTMLElement).closest('a')
+      if (!anchorTarget) return
 
-      const hash = window.location.hash
+      if (anchorTarget.href === `${window.location.origin}/`) {
+        e.preventDefault()
+        return window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+
+      const hash = anchorTarget.hash.trim()
       if (!hash) return console.warn('No hash found')
 
       const target = document.querySelector(hash)
       if (!target) return console.warn('No target found')
 
-      // target.scrollIntoView({ behavior: 'smooth' })
+      e.preventDefault()
+
+      target.scrollIntoView({ behavior: 'smooth' })
+      history.replaceState(null, '', anchorTarget.href)
     }
 
-    window.addEventListener('hashchange', handleHashChange)
+    window.addEventListener('click', handleClick)
     return () => {
-      window.removeEventListener('hashchange', handleHashChange)
+      window.removeEventListener('click', handleClick)
     }
   }, [])
 }

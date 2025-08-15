@@ -60,7 +60,7 @@ export function Hero() {
             <a href="#playground">Try it now</a>
           </Button>
           <Button variant="outline" size="lg" className="text-base backdrop-blur-2xl" asChild>
-            <a href="#problems">Learn why</a>
+            <a href="#why">Learn why</a>
           </Button>
         </div>
       </Wrapper>
