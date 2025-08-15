@@ -1,16 +1,14 @@
 import { Button } from '@/components/ui/button'
 import { Wrapper } from '@/layouts/wrapper'
-import { BsQuestionOctagon } from 'react-icons/bs'
-import { LuPlay } from 'react-icons/lu'
 
 export function Hero() {
   return (
-    <section className="from-primary/5 via-background to-accent/5 relative overflow-hidden bg-gradient-to-br">
-      <div className="h-12 sm:h-20" />
+    <section className="from-primary/5 via-background to-accent/5 relative overflow-hidden bg-gradient-to-br py-20 sm:py-28">
+      <div className="h-20" />
 
-      <div className="bg-grid-pattern pointer-events-none absolute inset-0 opacity-[0.02]" />
+      <div className="bg-grid-pattern pointer-events-none absolute inset-0" />
 
-      <Wrapper className="py-20 text-center [--max-width:60rem] sm:py-28">
+      <Wrapper className="text-center [--max-width:60rem]">
         <div className="bg-secondary/50 text-secondary-foreground mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
           <span className="relative flex size-2">
             <span className="bg-success absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" />
@@ -41,56 +39,68 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="text-muted-foreground mb-10 text-base sm:text-xl md:text-2xl">
+        <p className="text-muted-foreground mb-10 text-xl sm:text-2xl">
           Generate responsive CSS wrappers that give you{' '}
           <strong className="text-foreground">exactly</strong> the content width you want. No more
           math, no more surprises.
         </p>
 
-        <div className="flex flex-col justify-center gap-4 min-[22.5rem]:flex-row">
-          <Button
-            size="lg"
-            className="!h-11 rounded-[0.8125rem] !px-6 text-base sm:!h-12 sm:!px-7"
-            asChild
-          >
-            <a href="#playground">
-              <LuPlay className="text-base" />
-              TRY IT NOW
-            </a>
+        <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <Button size="lg" className="text-base" asChild>
+            <a href="#playground">Try it now</a>
           </Button>
+          <Button variant="outline" size="lg" className="text-base" asChild>
+            <a href="#problems">Learn why</a>
+          </Button>
+        </div>
 
-          <Button
-            size="lg"
-            variant="outline"
-            className="!h-11 rounded-[0.8125rem] !px-5 text-base sm:!h-12 sm:!px-6"
-            asChild
-          >
-            <a href="#why">
-              <BsQuestionOctagon className="text-base" />
-              WHY?
-            </a>
-          </Button>
+        <div className="mt-20 flex flex-wrap items-center justify-center gap-6">
+          <div className="from-primary/10 flex items-center gap-2 rounded-full bg-gradient-to-r to-transparent px-4 py-2">
+            <svg className="text-primary size-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fillRule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <span className="text-foreground font-medium">Precise Widths</span>
+          </div>
+
+          <div className="from-chart-2/10 flex items-center gap-2 rounded-full bg-gradient-to-r to-transparent px-4 py-2">
+            <svg
+              className="text-chart-2 size-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+              />
+            </svg>
+            <span className="text-foreground font-medium">Responsive</span>
+          </div>
+
+          <div className="from-chart-4/10 flex items-center gap-2 rounded-full bg-gradient-to-r to-transparent px-4 py-2">
+            <svg
+              className="text-chart-4 size-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
+            <span className="text-foreground font-medium">Zero Math</span>
+          </div>
         </div>
       </Wrapper>
-
-      <div className="flex items-center justify-center py-16">
-        {/* Cool geometric pattern */}
-        <div className="relative">
-          {/* Main hexagon */}
-          <div className="from-primary/20 via-primary/10 border-primary/30 h-32 w-32 rotate-45 rounded-lg border bg-gradient-to-br to-transparent shadow-2xl" />
-
-          {/* Floating elements */}
-          <div className="bg-chart-2/40 absolute -top-4 -left-4 h-6 w-6 animate-pulse rounded-full" />
-          <div className="bg-chart-4/50 absolute -top-2 -right-2 h-4 w-4 animate-pulse rounded-full delay-300" />
-          <div className="bg-primary/30 absolute -bottom-3 left-8 h-5 w-5 animate-pulse rounded-full delay-700" />
-
-          {/* Inner accent */}
-          <div className="from-primary/40 absolute inset-4 h-24 w-24 rotate-45 rounded-md bg-gradient-to-br to-transparent" />
-
-          {/* Glow effect */}
-          <div className="bg-primary/5 absolute inset-0 h-32 w-32 rotate-45 rounded-lg blur-xl" />
-        </div>
-      </div>
     </section>
   )
 }
