@@ -12,7 +12,7 @@ const languages = [
 export function MaxWidthWrapperPlayground({}) {
   const [language, setLanguage] = useState(languages[0].value)
 
-  const [valuePadding, setValuePadding] = useState('100px')
+  const [valuePadding, setValuePadding] = useState('5%')
   const [valueMaxWidth, setValueMaxWidth] = useState('1000px')
 
   const [cssVariablePadding, setCssVariablePadding] = useState('padding')
