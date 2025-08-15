@@ -1,6 +1,7 @@
 export * from './footer'
 export * from './hero'
 export * from './navbar'
+export * from './playground'
 export * from './testimonials'
 export * from './the-problems'
 export * from './the-solutions'

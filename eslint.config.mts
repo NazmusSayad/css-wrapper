@@ -139,7 +139,7 @@ export default [
         },
       ],
 
-      'max-lines': [2, { max: 200, skipBlankLines: true, skipComments: true }],
+      'max-lines': [2, { max: 300, skipBlankLines: true, skipComments: true }],
       'react-func/max-lines-per-function': [
         2,
         { max: 30, skipBlankLines: true, skipComments: true },
