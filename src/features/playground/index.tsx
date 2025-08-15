@@ -4,7 +4,7 @@ import { PlaygroundInput } from './playground-input'
 import { PlaygroundLayout } from './playground-layout'
 import { PlaygroundPreview } from './playground-preview'
 
-export function MaxWidthWrapperPlayground({}) {
+export function WrapperPlayground({}) {
   const [valuePadding, setValuePadding] = useState('4%')
   const [valueMaxWidth, setValueMaxWidth] = useState('1200px')
 
