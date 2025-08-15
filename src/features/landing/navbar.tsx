@@ -83,7 +83,7 @@ export function Navbar() {
               <ThemeToggle />
             </div>
 
-            <Button variant="ghost" className="hidden sm:inline-flex" asChild>
+            <Button variant="outline" className="hidden sm:inline-flex" asChild>
               <a
                 href="https://github.com/NazmusSayad/css-wrapper"
                 target="_blank"
