@@ -5,6 +5,7 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { Wrapper } from '@/layouts/wrapper'
 import { cn } from '@/lib/utils'
+import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -101,42 +102,56 @@ export function Navbar() {
         </div>
       </Wrapper>
 
-      {isMenuOpen && (
-        <div className="bg-background border-t py-4 md:hidden">
-          <Wrapper>
-            <nav className="flex flex-col gap-4">
-              <a
-                href="#playground"
-                className="text-muted-foreground text-sm font-medium"
-                onClick={() => setIsMenuOpen(false)}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="bg-background overflow-hidden border-t py-4 md:hidden"
+            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
+            <Wrapper>
+              <motion.nav
+                className="flex flex-col gap-4"
+                exit={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2, delay: 0.1 }}
               >
-                Playground
-              </a>
-              <a
-                href="#problems"
-                className="text-muted-foreground text-sm font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Problems
-              </a>
-              <a
-                href="#solutions"
-                className="text-muted-foreground text-sm font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Solutions
-              </a>
-              <a
-                href="#why"
-                className="text-muted-foreground text-sm font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Why
-              </a>
-            </nav>
-          </Wrapper>
-        </div>
-      )}
+                <Link
+                  href="#playground"
+                  className="text-muted-foreground text-sm font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Playground
+                </Link>
+                <Link
+                  href="#problems"
+                  className="text-muted-foreground text-sm font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Problems
+                </Link>
+                <Link
+                  href="#solutions"
+                  className="text-muted-foreground text-sm font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Solutions
+                </Link>
+                <Link
+                  href="#why"
+                  className="text-muted-foreground text-sm font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Why
+                </Link>
+              </motion.nav>
+            </Wrapper>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
