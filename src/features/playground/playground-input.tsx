@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
@@ -63,12 +64,36 @@ export function PlaygroundInput({
             <Label className="text-foreground/90 flex-col items-start gap-2.5 text-xs font-medium tracking-wider uppercase">
               <span>Max Width</span>
 
-              <Input
-                value={maxWidth}
-                onChange={(e) => setMaxWidth(e.target.value)}
-                placeholder="1200px"
-                className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 backdrop-blur-sm transition-all focus:shadow-sm"
-              />
+              <div className="relative isolate w-full">
+                <Input
+                  value={maxWidth}
+                  onChange={(e) => setMaxWidth(e.target.value)}
+                  placeholder="1200px"
+                  className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 w-full backdrop-blur-sm transition-all focus:shadow-sm"
+                />
+
+                {maxWidth.trim().endsWith('rem') && (
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="text-muted-foreground/80 absolute top-1/2 right-1 -translate-y-1/2 text-xs"
+                    onClick={() => setMaxWidth(`${Number(maxWidth.replace('rem', '')) * 16}px`)}
+                  >
+                    px
+                  </Button>
+                )}
+
+                {maxWidth.trim().endsWith('px') && (
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="text-muted-foreground/80 absolute top-1/2 right-1 -translate-y-1/2 text-xs"
+                    onClick={() => setMaxWidth(`${Number(maxWidth.replace('px', '')) / 16}rem`)}
+                  >
+                    rem
+                  </Button>
+                )}
+              </div>
             </Label>
 
             {maxWidthTips && maxWidthTips.length > 0 && (
