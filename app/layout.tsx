@@ -3,7 +3,6 @@ import '@/styles/initial.css'
 import '@/styles/theme.scss'
 
 import type { Metadata } from 'next'
-import { ThemeProvider } from 'next-themes'
 import { PropsWithChildren } from 'react'
 import { AppLayout } from './app-layout'
 
@@ -92,9 +91,5 @@ export const metadata: Metadata = {
 }
 
 export default function Layout({ children }: PropsWithChildren) {
-  return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <AppLayout>{children}</AppLayout>
-    </ThemeProvider>
-  )
+  return <AppLayout>{children}</AppLayout>
 }

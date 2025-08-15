@@ -1,6 +1,7 @@
 'use client'
 
 import { Toaster } from '@/components/ui/sonner'
+import { ThemeProvider } from 'next-themes'
 import { Fira_Code, Inter } from 'next/font/google'
 import { PropsWithChildren } from 'react'
 
@@ -19,10 +20,12 @@ const fontsClassName = ['antialiased', ...fonts].join(' ')
 
 export function AppLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={fontsClassName}>
-        {children}
-        <Toaster richColors />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+          <Toaster richColors />
+        </ThemeProvider>
       </body>
     </html>
   )
