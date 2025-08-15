@@ -133,7 +133,13 @@ function PlatformOutput({
           </div>
 
           <div className="*:!text-[1rem] *:!leading-[1.6]">
-            <SyntaxHighlighter showLineNumbers style={atomOneDark} language={findLanguage(file)}>
+            <SyntaxHighlighter
+              wrapLines
+              wrapLongLines
+              showLineNumbers
+              style={atomOneDark}
+              language={findLanguage(file)}
+            >
               {code}
             </SyntaxHighlighter>
           </div>
