@@ -15,7 +15,3 @@ export function generateTailwindCssPaddingCode(input: PlatformOutputInput) {
 export function generateTailwindCssMaxWidthCode(input: PlatformOutputInput) {
   return `px-[${generateCSSPaddingCode(input).replaceAll(' ', '')}]`
 }
-
-
-
-
