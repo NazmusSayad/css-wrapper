@@ -1,13 +1,4 @@
-import {
-  Footer,
-  Hero,
-  Navbar,
-  Playground,
-  Testimonials,
-  TheProblems,
-  TheSolutions,
-  WhyWrapper,
-} from '@/features/landing'
+import { Footer, Hero, Navbar, Playground, Testimonials, WhyWrapper } from '@/features/landing'
 
 export const dynamic = 'force-static'
 
@@ -20,8 +11,6 @@ export default function HomePage() {
         <Hero />
         <Playground />
         <WhyWrapper />
-        <TheProblems />
-        <TheSolutions />
         <Testimonials />
       </main>
 

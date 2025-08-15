@@ -1,14 +1,16 @@
 'use client'
 
+import { DevIconsCSS } from '@/assets'
 import { Button } from '@/components/ui/button'
 import { useThemeContext } from '@/contexts/theme-context'
 import { Wrapper } from '@/layouts/wrapper'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export function Navbar() {
   const { theme, toggleTheme } = useThemeContext()
-  const [scrollTop, setScrollTop] = useState(0)
+  const [scrollTop, setScrollTop] = useState<number | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -28,29 +30,16 @@ export function Navbar() {
     <header
       className={cn(
         'fixed top-0 z-50 w-full border-b border-transparent bg-transparent backdrop-blur-none',
-        scrollTop > 100 && 'border-b-border bg-background/80 backdrop-blur-md'
+        scrollTop && scrollTop > 100 && 'border-b-border bg-background/80',
+        (scrollTop == null || scrollTop > 100) && 'backdrop-blur-md'
       )}
     >
       <Wrapper>
         <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="bg-primary flex size-8 items-center justify-center rounded-lg">
-              <svg
-                className="text-primary-foreground size-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </div>
-            <span className="text-lg font-semibold">CSS Wrapper</span>
-          </div>
+          <Link href="/" className="flex items-center gap-2">
+            <DevIconsCSS className="size-5" />
+            <span className="font-mono text-lg font-semibold uppercase">CSS Wrapper</span>
+          </Link>
 
           <nav className="hidden items-center gap-6 md:flex">
             <a
