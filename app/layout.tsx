@@ -4,6 +4,7 @@ import '@/styles/theme.scss'
 
 import { ThemeContextProvider } from '@/contexts/theme-context'
 import type { Metadata } from 'next'
+import { PropsWithChildren } from 'react'
 import { AppLayout } from './app-layout'
 
 export const dynamic = 'force-static'
@@ -81,7 +82,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: PropsWithChildren) {
   return (
     <ThemeContextProvider>
       <AppLayout>{children}</AppLayout>
