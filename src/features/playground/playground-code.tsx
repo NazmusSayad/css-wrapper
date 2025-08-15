@@ -20,7 +20,7 @@ export type PlaygroundCodeProps = {
 export function PlaygroundCode({ languages, output, language, setLanguage }: PlaygroundCodeProps) {
   return (
     <>
-      <header className="flex items-center justify-between">
+      <header className="mb-2 flex items-center justify-between">
         <div>{output.map(({ label }) => label)}</div>
 
         <div>
