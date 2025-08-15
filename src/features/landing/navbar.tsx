@@ -46,8 +46,7 @@ export function Navbar() {
     <header
       className={cn(
         'fixed top-0 isolate z-50 w-full border-b border-transparent bg-transparent backdrop-blur-none',
-        scrollTop && scrollTop > 100 && 'border-b-border bg-background/80',
-        (scrollTop == null || scrollTop > 100) && 'backdrop-blur-md'
+        scrollTop && scrollTop > 100 && 'border-b-border bg-background/80 backdrop-blur-md'
       )}
     >
       <Wrapper>
