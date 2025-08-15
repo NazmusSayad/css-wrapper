@@ -7,8 +7,13 @@ import styles from './styles.module.scss'
 export function Hero() {
   return (
     <section className="relative -mb-8 overflow-hidden py-28 sm:-mb-12 sm:py-36">
-      <div className="from-primary/5 via-background to-accent/5 absolute inset-0 -z-10 bg-gradient-to-br [mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)] [mask-size:100%_100%] [mask-repeat:no-repeat] blur-[2px]">
-        <div className={cn(styles.bgGridPattern, 'pointer-events-none absolute inset-0')} />
+      <div className="from-primary/5 via-background to-accent/5 absolute inset-0 -z-10 bg-gradient-to-br [mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)] [mask-size:100%_100%] [mask-repeat:no-repeat]">
+        <div
+          className={cn(
+            styles.bgGridPattern,
+            'pointer-events-none absolute inset-0 opacity-50 blur-[1px]'
+          )}
+        />
       </div>
 
       <HeroCodeAnimations />
@@ -54,7 +59,7 @@ export function Hero() {
           <Button size="lg" className="text-base" asChild>
             <a href="#playground">Try it now</a>
           </Button>
-          <Button variant="outline" size="lg" className="text-base" asChild>
+          <Button variant="outline" size="lg" className="text-base backdrop-blur-2xl" asChild>
             <a href="#problems">Learn why</a>
           </Button>
         </div>

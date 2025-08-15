@@ -69,7 +69,7 @@ export function PlaygroundInput({
                   value={maxWidth}
                   onChange={(e) => setMaxWidth(e.target.value)}
                   placeholder="1200px"
-                  className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 w-full backdrop-blur-sm transition-all focus:shadow-sm"
+                  className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 w-full transition-all focus:shadow-sm"
                 />
 
                 {maxWidth.trim().endsWith('rem') && (
@@ -129,7 +129,7 @@ export function PlaygroundInput({
                 value={padding}
                 onChange={(e) => setPadding(e.target.value)}
                 placeholder="1rem"
-                className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 backdrop-blur-sm transition-all focus:shadow-sm"
+                className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 transition-all focus:shadow-sm"
               />
             </Label>
 
@@ -178,7 +178,7 @@ export function PlaygroundInput({
                 value={maxWidthVariable}
                 onChange={(e) => setMaxWidthVariable(e.target.value)}
                 placeholder="--max-width"
-                className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 backdrop-blur-sm transition-all focus:shadow-sm"
+                className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 transition-all focus:shadow-sm"
               />
             </Label>
 
@@ -189,7 +189,7 @@ export function PlaygroundInput({
                 value={paddingVariable}
                 onChange={(e) => setPaddingVariable(e.target.value)}
                 placeholder="--padding"
-                className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 backdrop-blur-sm transition-all focus:shadow-sm"
+                className="border-border/60 bg-background/80 text-foreground/90 placeholder:text-muted-foreground/60 focus:border-primary/60 focus:bg-background/90 h-11 transition-all focus:shadow-sm"
               />
             </Label>
           </AccordionContent>

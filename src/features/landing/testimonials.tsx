@@ -76,7 +76,7 @@ export function Testimonials() {
           <CarouselContent>
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="bg-background/50 h-full rounded-lg border p-6 backdrop-blur-sm">
+                <div className="bg-background/50 h-full rounded-lg border p-6">
                   <div className="mb-4 flex justify-center">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="text-warning size-4 fill-current" />

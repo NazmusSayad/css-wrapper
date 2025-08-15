@@ -3,7 +3,7 @@
 
 export function HeroCodeAnimations() {
   return (
-    <div className="pointer-events-none absolute inset-0 size-full overflow-hidden [mask-image:linear-gradient(to_top,black_0%,transparent_100%)] [mask-size:100%_100%] [mask-repeat:no-repeat] opacity-50 blur-[1px]">
+    <div className="pointer-events-none absolute inset-0 size-full overflow-hidden [mask-image:linear-gradient(to_top,black_0%,transparent_100%)] [mask-size:100%_100%] [mask-repeat:no-repeat] opacity-30">
       <style jsx>{`
         .float-up {
           animation: floatUp 4s ease-in-out infinite;

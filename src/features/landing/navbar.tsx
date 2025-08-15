@@ -45,10 +45,17 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'fixed top-0 isolate z-50 w-full border-b border-transparent bg-transparent backdrop-blur-none',
-        scrollTop && scrollTop > 100 && 'border-b-border bg-background/80 backdrop-blur-md'
+        'fixed top-0 isolate z-50 w-full border-b border-transparent bg-transparent transition-all',
+        scrollTop && 'border-b-border bg-background/80'
       )}
     >
+      <div
+        className={cn(
+          'pointer-events-none absolute inset-0 -z-10 opacity-0 backdrop-blur-md transition-opacity',
+          scrollTop && 'opacity-100'
+        )}
+      />
+
       <Wrapper>
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
