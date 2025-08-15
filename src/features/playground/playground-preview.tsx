@@ -45,30 +45,24 @@ export function PlaygroundPreview({ maxWidth, padding }: { maxWidth: string; pad
     return () => observer.disconnect()
   }, [containerRef, maxWidthWrapperContentRef, paddingWrapperContentRef])
 
-  const rawScale = containerWidth / wrapperViewport
-  const maxWidthWrapperPadding = (wrapperViewport - _maxWidthWrapperWidth) / 2
-  const paddingWrapperPadding = (wrapperViewport - _maxWidthWrapperWidth) / 2
-
   return (
     <div ref={containerRef} className="relative isolate h-full">
       <div className="inset-0 flex size-full flex-col gap-2 md:absolute">
         <MaxWidthWrapper
           padding={padding}
           maxWidth={maxWidth}
-          rawScale={rawScale}
+          rawScale={containerWidth / wrapperViewport}
           wrapperViewport={wrapperViewport}
           contentWidth={_maxWidthWrapperWidth}
-          contentPadding={maxWidthWrapperPadding}
           contentRef={maxWidthWrapperContentRef}
         />
 
         {/* <PaddingWrapper
           padding={padding}
           maxWidth={maxWidth}
-          rawScale={rawScale}
+          rawScale={containerWidth / wrapperViewport}
           wrapperViewport={wrapperViewport}
-          contentWidth={paddingWrapperWidth}
-          contentPadding={paddingWrapperPadding}
+          contentWidth={_paddingWrapperWidth}
           contentRef={paddingWrapperContentRef}
         /> */}
 
@@ -106,7 +100,6 @@ type WrapperViewProps = {
 
   rawScale: number
   contentWidth: number
-  contentPadding: number
   wrapperViewport: number
 
   contentRef: React.RefObject<HTMLDivElement | null>
@@ -118,9 +111,10 @@ export function MaxWidthWrapper({
   rawScale,
   contentRef,
   contentWidth,
-  contentPadding,
   wrapperViewport,
 }: WrapperViewProps) {
+  const contentPadding = (wrapperViewport - contentWidth) / 2
+
   return (
     <div className="flex h-full flex-col gap-2 overflow-hidden">
       <div>Max Width Wrapper</div>
@@ -147,9 +141,10 @@ export function PaddingWrapper({
   rawScale,
   contentRef,
   contentWidth,
-  contentPadding,
   wrapperViewport,
 }: WrapperViewProps) {
+  const contentPadding = (wrapperViewport - contentWidth) / 2
+
   return (
     <div className="flex h-full flex-col gap-2 overflow-hidden">
       <div>Padding Wrapper</div>
