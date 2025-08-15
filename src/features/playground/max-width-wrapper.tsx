@@ -40,7 +40,11 @@ export function MaxWidthWrapperPlayground({}) {
           setLanguage={setLanguage}
           output={[
             {
-              label: 'page.tsx',
+              file: 'layout.tsx',
+              code: 'import { MaxWidthWrapper } from "@/components/max-width-wrapper"',
+            },
+            {
+              file: 'page.tsx',
               code: 'import { MaxWidthWrapper } from "@/components/max-width-wrapper"',
             },
           ]}

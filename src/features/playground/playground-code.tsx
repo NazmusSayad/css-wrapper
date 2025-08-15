@@ -14,14 +14,17 @@ export type PlaygroundCodeProps = {
   language: string
   setLanguage: (language: string) => void
 
-  output: { label: ReactNode; code: string }[]
+  output: { file: string; code: string }[]
 }
 
 export function PlaygroundCode({ languages, output, language, setLanguage }: PlaygroundCodeProps) {
   return (
     <>
       <header className="mb-2 flex items-center justify-between">
-        <div>{output.map(({ label }) => label)}</div>
+        <div>
+          <button>Max Width Wrapper</button>
+          <button>Padding Wrapper</button>
+        </div>
 
         <div>
           <Select value={language} onValueChange={setLanguage}>
@@ -41,10 +44,14 @@ export function PlaygroundCode({ languages, output, language, setLanguage }: Pla
       </header>
 
       <div>
-        {output.map(({ code }) => (
-          <SyntaxHighlightedCode key={code} className="block font-mono">
-            {code}
-          </SyntaxHighlightedCode>
+        {output.map(({ file, code }) => (
+          <div key={file}>
+            <div>{file}</div>
+
+            <SyntaxHighlightedCode className="block font-mono text-[0.9375rem]">
+              {code}
+            </SyntaxHighlightedCode>
+          </div>
         ))}
       </div>
     </>
