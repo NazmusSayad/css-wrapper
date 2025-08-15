@@ -10,9 +10,9 @@ import { AppLayout } from './app-layout'
 export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
-  title: 'CSS Wrapper Playground - Responsive Layout Generator',
+  title: 'CSS Wrapper Generator - Responsive Layout Solution',
   description:
-    'Generate responsive CSS wrapper components for padding and max-width layouts. Support for multiple platforms including React, Vue, Angular, and vanilla CSS.',
+    'Generate responsive CSS wrapper components that solve the padding vs max-width problem. Create consistent layouts with exact content widths for React, Vue, Angular, and vanilla CSS. No more math, no more surprises.',
   keywords: [
     'CSS wrapper',
     'responsive design',
@@ -28,10 +28,19 @@ export const metadata: Metadata = {
     'CSS playground',
     'frontend development',
     'CSS framework',
+    'layout generator',
+    'CSS math solver',
+    'responsive containers',
+    'CSS variables',
+    'min() function',
+    'calc() function',
+    'nested layouts',
+    'consistent spacing',
+    'content width calculator',
   ],
-  authors: [{ name: 'CSS Wrapper Playground' }],
-  creator: 'CSS Wrapper Playground',
-  publisher: 'CSS Wrapper Playground',
+  authors: [{ name: 'CSS Wrapper Generator' }],
+  creator: 'CSS Wrapper Generator',
+  publisher: 'CSS Wrapper Generator',
   formatDetection: {
     email: false,
     address: false,
@@ -46,17 +55,17 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'CSS Wrapper Playground - Responsive Layout Generator',
+    title: 'CSS Wrapper Generator - Responsive Layout Solution',
     description:
-      'Generate responsive CSS wrapper components for padding and max-width layouts. Support for multiple platforms including React, Vue, Angular, and vanilla CSS.',
+      'Generate responsive CSS wrapper components that solve the padding vs max-width problem. Create consistent layouts with exact content widths for React, Vue, Angular, and vanilla CSS. No more math, no more surprises.',
     url: 'https://wrapper.sayad.dev',
-    siteName: 'CSS Wrapper Playground',
+    siteName: 'CSS Wrapper Generator',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'CSS Wrapper Playground - Responsive Layout Generator',
+        alt: 'CSS Wrapper Generator - Responsive Layout Solution',
       },
     ],
     locale: 'en_US',
@@ -64,9 +73,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CSS Wrapper Playground - Responsive Layout Generator',
+    title: 'CSS Wrapper Generator - Responsive Layout Solution',
     description:
-      'Generate responsive CSS wrapper components for padding and max-width layouts. Support for multiple platforms including React, Vue, Angular, and vanilla CSS.',
+      'Generate responsive CSS wrapper components that solve the padding vs max-width problem. Create consistent layouts with exact content widths for React, Vue, Angular, and vanilla CSS. No more math, no more surprises.',
     images: ['/og-image.png'],
   },
   robots: {

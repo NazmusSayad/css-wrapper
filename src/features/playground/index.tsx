@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { PlaygroundCode } from './playground-code'
 import { PlaygroundInput } from './playground-input'
