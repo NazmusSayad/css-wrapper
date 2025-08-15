@@ -8,7 +8,7 @@ import { Wrapper } from '@/layouts/wrapper'
 export function Hero() {
   return (
     <section className="relative -mb-20 overflow-hidden py-20 sm:-mb-24 sm:py-28">
-      <div className="from-primary/5 via-background to-accent/5 absolute inset-0 -z-10 bg-gradient-to-br">
+      <div className="from-primary/5 via-background to-accent/5 absolute inset-0 -z-10 bg-gradient-to-br blur-[2px]">
         <div className="bg-grid-pattern pointer-events-none absolute inset-0" />
       </div>
 
