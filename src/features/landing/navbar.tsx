@@ -1,17 +1,16 @@
 'use client'
 
 import { DevIconsCSS } from '@/assets'
+import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { Wrapper } from '@/layouts/wrapper'
 import { cn } from '@/lib/utils'
-import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export function Navbar() {
-  const { theme, setTheme } = useTheme()
-  const [scrollTop, setScrollTop] = useState<number | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [scrollTop, setScrollTop] = useState<number | null>(null)
 
   useEffect(() => {
     setScrollTop(window.scrollY)
@@ -63,14 +62,7 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              className="hidden sm:inline-flex"
-              suppressHydrationWarning
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              {theme === 'dark' ? 'Light' : 'Dark'}
-            </Button>
+            <ThemeToggle />
 
             <Button variant="ghost" className="hidden sm:inline-flex" asChild>
               <a

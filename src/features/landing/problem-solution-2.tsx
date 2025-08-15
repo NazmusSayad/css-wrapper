@@ -1,7 +1,9 @@
+import { ProblemSolveCodeBlock } from './problem-solve-code-block'
+
 export function ProblemSolution2() {
   return (
     <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
-      <div className="lg:order-2">
+      <div>
         <div className="bg-destructive/10 text-destructive mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm">
           <svg className="size-4" fill="currentColor" viewBox="0 0 20 20">
             <path
@@ -12,97 +14,77 @@ export function ProblemSolution2() {
           </svg>
           The Problem
         </div>
-        <h3 className="text-foreground mb-4 text-2xl font-bold">Nested Wrapper Breakage</h3>
+        <h3 className="text-foreground mb-4 text-2xl font-bold">No Extra Wrapper Divs</h3>
         <p className="text-muted-foreground mb-6">
-          Fixed padding breaks when used inside other containers. The padding is designed for
-          full-screen width, not container-relative width.
+          Traditional solutions require extra wrapper divs for every section. This clutters your
+          HTML and makes styling more complex with nested containers everywhere.
         </p>
 
-        <div className="border-destructive/20 bg-destructive/5 mb-6 rounded-lg border p-4">
-          <svg viewBox="0 0 400 200" className="h-auto w-full max-w-md">
-            <rect
-              x="20"
-              y="20"
-              width="360"
-              height="160"
-              fill="none"
-              stroke="#64748b"
-              strokeWidth="2"
-              strokeDasharray="8,4"
-            />
-            <text x="25" y="15" className="fill-slate-600 text-xs">
-              Parent Container (sidebar/grid)
-            </text>
+        <div className="from-muted/50 mb-4 rounded-md bg-gradient-to-r to-transparent p-4">
+          <h5 className="text-foreground mb-2 text-sm font-semibold">Traditional CSS</h5>
 
-            <rect
-              x="40"
-              y="50"
-              width="320"
-              height="80"
-              fill="none"
-              stroke="#ef4444"
-              strokeWidth="2"
-            />
-            <text x="45" y="45" className="fill-destructive font-mono text-xs">
-              .wrapper {`{ padding: 2rem }`}
-            </text>
-
-            <rect x="40" y="50" width="32" height="80" fill="#ef4444" fillOpacity="0.3" />
-            <rect x="328" y="50" width="32" height="80" fill="#ef4444" fillOpacity="0.3" />
-            <text x="56" y="95" className="fill-destructive text-xs">
-              2rem
-            </text>
-            <text x="344" y="95" className="fill-destructive text-xs">
-              2rem
-            </text>
-
-            <rect
-              x="72"
-              y="50"
-              width="256"
-              height="80"
-              fill="#fef2f2"
-              stroke="#ef4444"
-              strokeWidth="1"
-              strokeDasharray="2,2"
-            />
-            <text
-              x="200"
-              y="90"
-              textAnchor="middle"
-              className="fill-destructive text-sm font-semibold"
-            >
-              Broken Layout!
-            </text>
-            <text x="200" y="105" textAnchor="middle" className="fill-destructive text-xs">
-              Fixed padding doesn&apos;t scale
-            </text>
-
-            <text x="200" y="170" textAnchor="middle" className="fill-destructive text-xs">
-              ⚠ Inconsistent spacing across nesting levels
-            </text>
-          </svg>
+          <ProblemSolveCodeBlock
+            className="bg-muted/30"
+            code={`<div class="wrapper">
+  <section>Content</section>
+</div>
+<div class="wrapper">
+  <footer>More content</footer>
+</div>`}
+          />
         </div>
 
-        <div className="border-destructive/20 bg-destructive/5 rounded border p-4">
-          <p className="text-destructive text-sm">
-            <strong>Result:</strong> Inconsistent spacing, broken layouts, and unpredictable
-            behavior in complex hierarchies.
-          </p>
-        </div>
-        <div className="from-muted/50 mt-4 rounded-lg bg-gradient-to-r to-transparent p-4">
-          <h5 className="text-foreground mb-2 text-sm font-semibold">Broken Nested Layout</h5>
-          <pre className="bg-muted/50 overflow-x-auto rounded p-3 text-xs">
-            <code>{`<div class="sidebar"> <!-- 300px width -->
-  <div class="wrapper"> <!-- 2rem padding = 64px -->
-    <!-- Content only gets 172px! -->
-  </div>
-</div>`}</code>
-          </pre>
+        <svg
+          viewBox="0 0 380 80"
+          className="border-destructive/20 bg-destructive/5 mb-4 h-auto w-full rounded-md border p-3"
+        >
+          <rect x="50" y="10" width="280" height="50" fill="#f1f5f9" />
+          <text x="190" y="40" textAnchor="middle" className="fill-slate-600 text-sm font-semibold">
+            Extra Div Required!
+          </text>
+
+          <rect x="50" y="10" width="30" height="50" fill="#ef4444" fillOpacity="0.2" />
+          <text x="65" y="40" textAnchor="middle" className="fill-destructive text-xs">
+            div
+          </text>
+
+          <rect x="300" y="10" width="30" height="50" fill="#ef4444" fillOpacity="0.2" />
+          <text x="315" y="40" textAnchor="middle" className="fill-destructive text-xs">
+            div
+          </text>
+
+          <rect x="10" y="10" width="40" height="50" fill="#ef4444" fillOpacity="0.3" />
+          <text x="30" y="40" textAnchor="middle" className="fill-destructive text-[0.625rem]">
+            wrapper
+          </text>
+
+          <rect x="330" y="10" width="40" height="50" fill="#ef4444" fillOpacity="0.3" />
+          <text x="350" y="40" textAnchor="middle" className="fill-destructive text-[0.625rem]">
+            wrapper
+          </text>
+
+          <text x="190" y="75" textAnchor="middle" className="fill-destructive font-mono text-xs">
+            Cluttered HTML
+          </text>
+        </svg>
+
+        <div className="space-y-2 text-sm">
+          <div className="bg-destructive/5 text-destructive flex items-center justify-between rounded p-3">
+            <span>Extra markup:</span>
+            <span className="font-mono">Always needed</span>
+          </div>
+          <div className="bg-destructive/5 text-destructive flex items-center justify-between rounded p-3">
+            <span>HTML complexity:</span>
+            <span className="font-mono">High</span>
+          </div>
+          <div className="border-destructive/40 bg-destructive/10 text-destructive flex items-center justify-between rounded border p-3 font-semibold">
+            <span>Styling approach:</span>
+            <span className="font-mono">Cluttered</span>
+          </div>
         </div>
       </div>
 
-      <div className="lg:order-1">
+      <div>
         <div className="bg-success/10 text-success mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm">
           <svg className="size-4" fill="currentColor" viewBox="0 0 20 20">
             <path
@@ -115,84 +97,59 @@ export function ProblemSolution2() {
         </div>
         <h3 className="text-foreground mb-4 text-2xl font-bold">Padding Wrapper</h3>
         <p className="text-muted-foreground mb-6">
-          Percentage-based padding that adapts to any container. Works perfectly in nested layouts,
-          sidebars, and complex component hierarchies.
+          Direct padding solution that can be applied to any container without extra wrapper divs.
+          Perfect for sections, components, and existing elements that need responsive spacing.
         </p>
 
-        <div className="border-success/20 bg-success/5 mb-6 rounded-lg border p-4">
-          <svg viewBox="0 0 400 200" className="h-auto w-full max-w-md">
-            <rect
-              x="20"
-              y="20"
-              width="360"
-              height="160"
-              fill="none"
-              stroke="#64748b"
-              strokeWidth="2"
-              strokeDasharray="8,4"
-            />
-            <text x="25" y="15" className="fill-slate-600 text-xs">
-              Parent Container (sidebar/grid)
-            </text>
-
-            <rect
-              x="40"
-              y="50"
-              width="320"
-              height="80"
-              fill="none"
-              stroke="#10b981"
-              strokeWidth="2"
-            />
-            <text x="45" y="45" className="fill-success font-mono text-xs">
-              .wrapper {`{ padding-inline: min(4vw, 2rem) }`}
-            </text>
-
-            <rect x="40" y="50" width="16" height="80" fill="#10b981" fillOpacity="0.3" />
-            <rect x="344" y="50" width="16" height="80" fill="#10b981" fillOpacity="0.3" />
-            <text x="48" y="95" className="fill-success text-xs">
-              auto
-            </text>
-            <text x="352" y="95" className="fill-success text-xs">
-              auto
-            </text>
-
-            <rect
-              x="56"
-              y="50"
-              width="288"
-              height="80"
-              fill="#dcfce7"
-              stroke="#16a34a"
-              strokeWidth="2"
-            />
-            <text x="200" y="90" textAnchor="middle" className="fill-success text-sm font-bold">
-              Perfect Layout! ✓
-            </text>
-            <text x="200" y="105" textAnchor="middle" className="fill-success text-xs">
-              Adaptive padding scales perfectly
-            </text>
-
-            <text x="200" y="170" textAnchor="middle" className="fill-success text-xs">
-              ✓ Consistent spacing at every nesting level
-            </text>
-          </svg>
+        <div className="from-success/10 mb-4 rounded-md bg-gradient-to-r to-transparent p-4">
+          <h5 className="text-foreground mb-2 text-sm font-semibold">CSS Wrapper Solution</h5>
+          <ProblemSolveCodeBlock
+            className="bg-success/5"
+            code={`.wrapper {
+  padding-inline: max(calc((100% - 82.5rem) / 2), 4%);
+  margin-inline: auto;
+  width: 100%;
+}`}
+          />
         </div>
 
-        <div className="bg-success/5 text-success rounded p-4">
-          <p className="text-sm">
-            <strong>Result:</strong> Consistent spacing at every nesting level with automatic
-            responsive behavior.
-          </p>
-        </div>
-        <div className="from-success/10 mt-4 rounded-lg bg-gradient-to-r to-transparent p-4">
-          <h5 className="text-foreground mb-2 text-sm font-semibold">Nested-Ready Solution</h5>
-          <pre className="bg-success/5 overflow-x-auto rounded p-3 text-xs">
-            <code>{`.wrapper {
-  padding-inline: min(4vw, 2rem);
-}
-/* Works anywhere, any nesting level */`}</code>
-          </pre>
+        <svg
+          viewBox="0 0 380 80"
+          className="border-success/20 bg-success/5 mb-4 h-auto w-full rounded-md border p-3"
+        >
+          <rect x="10" y="10" width="40" height="50" fill="#10b981" fillOpacity="0.3" />
+          <text x="30" y="40" textAnchor="middle" className="fill-success text-[0.625rem]">
+            section
+          </text>
+
+          <rect x="50" y="10" width="280" height="50" fill="#dcfce7" />
+          <text x="190" y="40" textAnchor="middle" className="fill-success text-sm font-bold">
+            No Extra Divs! ✓
+          </text>
+
+          <rect x="330" y="10" width="40" height="50" fill="#10b981" fillOpacity="0.3" />
+          <text x="350" y="40" textAnchor="middle" className="fill-success text-[0.625rem]">
+            footer
+          </text>
+
+          <text x="190" y="75" textAnchor="middle" className="fill-success font-mono text-xs">
+            Clean HTML
+          </text>
+        </svg>
+
+        <div className="space-y-2 text-sm">
+          <div className="bg-success/5 text-success flex items-center justify-between rounded p-3">
+            <span>Extra markup:</span>
+            <span className="font-mono">None ✓</span>
+          </div>
+          <div className="bg-success/5 text-success flex items-center justify-between rounded p-3">
+            <span>HTML complexity:</span>
+            <span className="font-mono">Minimal</span>
+          </div>
+          <div className="border-success/40 bg-success/10 text-success flex items-center justify-between rounded border p-3 font-semibold">
+            <span>Styling approach:</span>
+            <span className="font-mono">Direct ✓</span>
+          </div>
         </div>
       </div>
     </div>
