@@ -20,61 +20,29 @@ export function ProblemSolution1() {
           dependent on two different things and the padding eats into your content width.
         </p>
 
-        {/* SVG Visualization - Problem */}
-        <div className="border-destructive/20 bg-destructive/5 mb-6 rounded-lg border p-4">
-          <svg viewBox="0 0 400 160" className="h-auto w-full max-w-md">
-            {/* Container */}
-            <rect
-              x="20"
-              y="20"
-              width="360"
-              height="80"
-              fill="none"
-              stroke="#ef4444"
-              strokeWidth="2"
-              strokeDasharray="4,4"
-            />
-            <text x="200" y="15" textAnchor="middle" className="fill-destructive font-mono text-xs">
-              max-width: 1440px
-            </text>
+        <svg
+          viewBox="0 0 380 80"
+          className="border-destructive/20 bg-destructive/5 mb-4 h-auto w-full rounded-lg border p-3"
+        >
+          <rect x="10" y="10" width="40" height="50" fill="#ef4444" fillOpacity="0.3" />
+          <text x="30" y="40" textAnchor="middle" className="fill-destructive text-xs">
+            32px
+          </text>
 
-            {/* Left Padding */}
-            <rect x="20" y="20" width="32" height="80" fill="#ef4444" fillOpacity="0.2" />
-            <text x="36" y="65" textAnchor="middle" className="fill-destructive font-mono text-xs">
-              2rem
-            </text>
+          <rect x="50" y="10" width="280" height="50" fill="#f1f5f9" />
+          <text x="190" y="40" textAnchor="middle" className="fill-slate-600 text-sm font-semibold">
+            Content: Only 1376px
+          </text>
 
-            {/* Right Padding */}
-            <rect x="348" y="20" width="32" height="80" fill="#ef4444" fillOpacity="0.2" />
-            <text x="364" y="65" textAnchor="middle" className="fill-destructive font-mono text-xs">
-              2rem
-            </text>
+          <rect x="330" y="10" width="40" height="50" fill="#ef4444" fillOpacity="0.3" />
+          <text x="350" y="40" textAnchor="middle" className="fill-destructive text-xs">
+            32px
+          </text>
 
-            {/* Content Area */}
-            <rect
-              x="52"
-              y="20"
-              width="296"
-              height="80"
-              fill="#f1f5f9"
-              stroke="#64748b"
-              strokeWidth="1"
-            />
-            <text
-              x="200"
-              y="65"
-              textAnchor="middle"
-              className="fill-slate-600 text-sm font-semibold"
-            >
-              Content: Only 1376px!
-            </text>
-
-            {/* Math visualization */}
-            <text x="200" y="130" textAnchor="middle" className="fill-destructive text-xs">
-              1440px - 64px (padding) = 1376px content
-            </text>
-          </svg>
-        </div>
+          <text x="190" y="75" textAnchor="middle" className="fill-destructive font-mono text-xs">
+            Container: 1440px
+          </text>
+        </svg>
 
         <div className="space-y-2 text-sm">
           <div className="bg-destructive/5 text-destructive flex items-center justify-between rounded p-3">
@@ -120,54 +88,29 @@ export function ProblemSolution1() {
           padding is calculated automatically using percentage-based responsive values.
         </p>
 
-        {/* SVG Visualization - Solution */}
-        <div className="border-success/20 bg-success/5 mb-6 rounded-lg border p-4">
-          <svg viewBox="0 0 400 160" className="h-auto w-full max-w-md">
-            {/* Smart Container */}
-            <rect
-              x="20"
-              y="20"
-              width="360"
-              height="80"
-              fill="none"
-              stroke="#10b981"
-              strokeWidth="2"
-            />
-            <text x="200" y="15" textAnchor="middle" className="fill-success font-mono text-xs">
-              min(100% - 4vw, 1440px)
-            </text>
+        <svg
+          viewBox="0 0 380 80"
+          className="border-success/20 bg-success/5 mb-4 h-auto w-full rounded-lg border p-3"
+        >
+          <rect x="10" y="10" width="24" height="50" fill="#10b981" fillOpacity="0.3" />
+          <text x="22" y="40" textAnchor="middle" className="fill-success text-xs">
+            auto
+          </text>
 
-            {/* Auto Padding (visual representation) */}
-            <rect x="20" y="20" width="24" height="80" fill="#10b981" fillOpacity="0.3" />
-            <text x="32" y="65" textAnchor="middle" className="fill-success text-xs">
-              auto
-            </text>
+          <rect x="34" y="10" width="312" height="50" fill="#dcfce7" />
+          <text x="190" y="40" textAnchor="middle" className="fill-success text-sm font-bold">
+            Content: Exactly 1440px! ✓
+          </text>
 
-            <rect x="356" y="20" width="24" height="80" fill="#10b981" fillOpacity="0.3" />
-            <text x="368" y="65" textAnchor="middle" className="fill-success text-xs">
-              auto
-            </text>
+          <rect x="346" y="10" width="24" height="50" fill="#10b981" fillOpacity="0.3" />
+          <text x="358" y="40" textAnchor="middle" className="fill-success text-xs">
+            auto
+          </text>
 
-            {/* Perfect Content Area */}
-            <rect
-              x="44"
-              y="20"
-              width="312"
-              height="80"
-              fill="#dcfce7"
-              stroke="#16a34a"
-              strokeWidth="2"
-            />
-            <text x="200" y="65" textAnchor="middle" className="fill-success text-sm font-bold">
-              Content: Exactly 1440px! ✓
-            </text>
-
-            {/* Smart calculation */}
-            <text x="200" y="130" textAnchor="middle" className="fill-success text-xs">
-              Smart calculation: padding adjusts automatically
-            </text>
-          </svg>
-        </div>
+          <text x="190" y="75" textAnchor="middle" className="fill-success font-mono text-xs">
+            Smart Container
+          </text>
+        </svg>
 
         <div className="space-y-2 text-sm">
           <div className="bg-success/5 text-success flex items-center justify-between rounded p-3">
