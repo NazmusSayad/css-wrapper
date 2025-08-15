@@ -10,7 +10,7 @@ export function PlaygroundLayout({ input, preview, output }: PlaygroundLayoutPro
   return (
     <div className="flex flex-col gap-8 py-4">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_1.5fr]">
-        <div className="pb-4">{input}</div>
+        <div>{input}</div>
         <div>{preview}</div>
       </div>
 

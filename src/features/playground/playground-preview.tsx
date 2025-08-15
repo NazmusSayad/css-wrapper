@@ -2,6 +2,7 @@ import { FadedDecimalNumber } from '@/components/animate-number'
 import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import { useLayoutEffect, useRef, useState } from 'react'
+import { GoBrowser } from 'react-icons/go'
 import { HiOutlineEye } from 'react-icons/hi2'
 import { SectionHeader } from './components/section-header'
 
@@ -74,10 +75,18 @@ export function PlaygroundPreview({ maxWidth, padding }: { maxWidth: string; pad
           contentRef={paddingWrapperContentRef}
         /> */}
 
-        <hr className="my-4" />
+        <div className="mx-auto flex w-[90%] items-center justify-center pt-4 pb-2">
+          <hr className="my-0 w-full" />
+          <hr className="my-0 w-12 border-none" />
+          <hr className="my-0 w-6" />
+          <hr className="my-0 w-12 border-none" />
+          <hr className="my-0 w-full" />
+        </div>
 
         <div className="flex flex-col gap-3">
-          <Label className="text-muted-foreground text-xs">Browser Width</Label>
+          <Label className="text-muted-foreground w-full justify-center text-center text-xs">
+            <GoBrowser className="text-sm" /> Browser Width (px)
+          </Label>
 
           <Slider
             min={100}
@@ -180,9 +189,20 @@ export function PaddingWrapper({
 function NumbersView({ padding, contentWidth }: { padding: number; contentWidth: number }) {
   return (
     <div className="flex items-center justify-between font-mono text-sm">
-      <FadedDecimalNumber value={padding} formatter={(value) => +value.toFixed(1)} />
-      <FadedDecimalNumber value={contentWidth} formatter={(value) => +value.toFixed(1)} />
-      <FadedDecimalNumber value={padding} formatter={(value) => +value.toFixed(1)} />
+      <div className="flex flex-col items-start">
+        <FadedDecimalNumber value={padding} formatter={(value) => +value.toFixed(1)} />
+        <label className="text-muted-foreground/70 text-[0.6rem]">Padding</label>
+      </div>
+
+      <div className="flex flex-col items-center">
+        <FadedDecimalNumber value={contentWidth} formatter={(value) => +value.toFixed(1)} />
+        <label className="text-muted-foreground/70 text-[0.6rem]">Width</label>
+      </div>
+
+      <div className="flex flex-col items-end">
+        <FadedDecimalNumber value={padding} formatter={(value) => +value.toFixed(1)} />
+        <label className="text-muted-foreground/70 text-[0.6rem]">Padding</label>
+      </div>
     </div>
   )
 }
