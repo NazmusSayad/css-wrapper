@@ -8,7 +8,7 @@ type PlaygroundLayoutProps = {
 
 export function PlaygroundLayout({ input, preview, output }: PlaygroundLayoutProps) {
   return (
-    <div>
+    <div className="flex flex-col gap-4 py-4">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_1.5fr]">
         <div>{input}</div>
         <div>{preview}</div>
