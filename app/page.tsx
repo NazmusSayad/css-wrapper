@@ -2,13 +2,12 @@ import {
   Footer,
   Hero,
   Navbar,
+  Playground,
   Testimonials,
   TheProblems,
   TheSolutions,
   WhyWrapper,
 } from '@/features/landing'
-import { WrapperPlayground } from '@/features/playground'
-import { Wrapper } from '@/layouts/wrapper'
 
 export const dynamic = 'force-static'
 
@@ -19,13 +18,7 @@ export default function HomePage() {
 
       <main>
         <Hero />
-
-        <section id="playground">
-          <Wrapper>
-            <WrapperPlayground />
-          </Wrapper>
-        </section>
-
+        <Playground />
         <WhyWrapper />
         <TheProblems />
         <TheSolutions />

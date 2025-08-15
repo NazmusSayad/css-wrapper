@@ -1,14 +1,34 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { useThemeContext } from '@/contexts/theme-context'
 import { Wrapper } from '@/layouts/wrapper'
-import { useState } from 'react'
+import { cn } from '@/lib/utils'
+import { useEffect, useState } from 'react'
 
 export function Navbar() {
+  const { theme, toggleTheme } = useThemeContext()
+  const [scrollTop, setScrollTop] = useState(0)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  useEffect(() => {
+    function handleScroll() {
+      setScrollTop(window.scrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
-    <header className="bg-background/80 sticky top-0 z-50 border-b backdrop-blur-sm">
+    <header
+      className={cn(
+        'fixed top-0 z-50 w-full border-b border-transparent bg-transparent backdrop-blur-none',
+        scrollTop > 100 && 'border-b-border bg-background/80 backdrop-blur-md'
+      )}
+    >
       <Wrapper>
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
@@ -32,10 +52,10 @@ export function Navbar() {
 
           <nav className="hidden items-center gap-6 md:flex">
             <a
-              href="#playground"
+              href="#why"
               className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             >
-              Playground
+              Why?
             </a>
             <a
               href="#problems"
@@ -49,16 +69,14 @@ export function Navbar() {
             >
               Solutions
             </a>
-            <a
-              href="#why"
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-            >
-              Why
-            </a>
           </nav>
 
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm" className="hidden sm:inline-flex" asChild>
+            <Button variant="ghost" className="hidden sm:inline-flex" onClick={toggleTheme}>
+              {theme === 'dark' ? 'Light' : 'Dark'}
+            </Button>
+
+            <Button variant="ghost" className="hidden sm:inline-flex" asChild>
               <a
                 href="https://github.com/NazmusSayad/css-wrapper"
                 target="_blank"
@@ -70,7 +88,8 @@ export function Navbar() {
                 GitHub
               </a>
             </Button>
-            <Button size="sm" asChild>
+
+            <Button asChild>
               <a href="#playground">Get Started</a>
             </Button>
 
