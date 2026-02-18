@@ -2,7 +2,6 @@
 
 # dependencies
 /yarn.lock
-/pnpm-lock.yaml
 /bun.lockb
 /node_modules
 /.pnp
